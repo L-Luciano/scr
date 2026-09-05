@@ -71,7 +71,11 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   .entete .nom strong { color: var(--accent); }
   .entete nav a { color: var(--texte); text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; }
   .entete nav a.cta { color: var(--fond); background: var(--accent); padding: 0.55rem 1rem; border-radius: 999px; font-weight: 700; }
-  .entete nav a[aria-current="page"]:not(.cta) { color: var(--accent); font-weight: 700; box-shadow: inset 0 -2px 0 var(--accent); }
+  .entete nav a[aria-current="page"]:not(.cta) { color: var(--accent); font-weight: 700; }
+  .nav-bureau > a, .groupe > a { position: relative; padding: 0.35rem 0; }
+  .nav-bureau > a::after, .groupe > a .libelle::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.2s ease; }
+  .groupe > a .libelle { position: relative; display: inline-block; }
+  .nav-bureau > a:hover::after, .nav-bureau > a[aria-current="page"]::after, .groupe:hover > a .libelle::after, .groupe:focus-within > a .libelle::after, .groupe > a[aria-current="page"] .libelle::after { transform: scaleX(1); }
   .entete nav a.cta[aria-current="page"] { box-shadow: 0 0 0 3px var(--fond), 0 0 0 5px var(--accent); }
   .menu nav a[aria-current="page"]:not(.cta) { border-left: 4px solid var(--accent); box-shadow: none; }
   .nav-bureau { display: none; }
@@ -87,7 +91,9 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   .menu nav a { display: block; padding: 0.85rem 1rem; border-radius: 0.5rem; }
   .menu nav a.cta { text-align: center; margin-top: 0.5rem; }
   .groupe { position: relative; }
-  .groupe > a .chevron { display: inline-block; width: 0.45em; height: 0.45em; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-0.15em) rotate(45deg); margin-left: 0.2rem; }
+  .groupe > a { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .groupe > a .chevron { display: inline-block; width: 0.38em; height: 0.38em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-0.12em) rotate(45deg); opacity: 0.7; transition: transform 0.2s ease, opacity 0.2s ease; }
+  .groupe:hover > a .chevron, .groupe:focus-within > a .chevron { transform: translateY(0.1em) rotate(225deg); opacity: 1; }
   .sous-menu { position: absolute; left: 50%; transform: translateX(-50%); top: calc(100% + 0.6rem); min-width: 12rem; margin: 0; padding: 0.5rem; list-style: none; background: var(--fond); border: 1px solid var(--accent); border-radius: 0.75rem; display: none; z-index: 10; }
   .sous-menu li a { display: block; padding: 0.6rem 0.9rem; border-radius: 0.5rem; }
   .sous-menu li a[aria-current="page"] { color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
@@ -146,7 +152,7 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
     {LIENS.map(lien =>
       lien.sous ? (
         <div class="groupe">
-          <a href={lien.href} aria-current={courant(lien.href)} aria-haspopup="true">{lien.libelle} <span class="chevron" aria-hidden="true"></span></a>
+          <a href={lien.href} aria-current={courant(lien.href)} aria-haspopup="true"><span class="libelle">{lien.libelle}</span><span class="chevron" aria-hidden="true"></span></a>
           <ul class="sous-menu">
             {lien.sous.map(sous => <li><a href={sous.href} aria-current={courantExact(sous.href, lien.href)}>{sous.libelle}</a></li>)}
           </ul>
