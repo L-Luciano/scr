@@ -18,11 +18,12 @@ const instagramUrl = `https://www.instagram.com/${coordonnees.instagram.slice(1)
     <main>
       <h1>Rejoindre / <em>Contact</em></h1>
       <div class="liseret"></div>
-      <p>Envie de jouer au Sporting Club Roquettan ? Le plus simple est de nous appeler : nous répondons à toutes vos questions sur les inscriptions.</p>
-      <BoutonAppel lienAppel={coordonnees.lienAppel} telephone={coordonnees.telephone} />
+      <p>Envie de jouer au Sporting Club Roquettan ? Écrivez-nous sur Instagram ou venez nous voir au stade : nous répondons à toutes vos questions sur les inscriptions.</p>
+      <p><a class="bouton" href={instagramUrl}>Nous écrire sur Instagram</a></p>
+      {coordonnees.lienAppel && coordonnees.telephone && <BoutonAppel lienAppel={coordonnees.lienAppel} telephone={coordonnees.telephone} />}
       <h2>Nos coordonnées</h2>
       <dl class="fiche">
-        <dt>Téléphone</dt><dd>{coordonnees.telephone}</dd>
+        {coordonnees.telephone && <><dt>Téléphone</dt><dd>{coordonnees.telephone}</dd></>}
         <dt>Instagram</dt><dd><a href={instagramUrl}>{coordonnees.instagram}</a></dd>
         <dt>Adresse</dt><dd>{coordonnees.lieu.nom}, {coordonnees.lieu.adresse}</dd>
       </dl>

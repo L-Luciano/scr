@@ -15,7 +15,8 @@ const IdentifiantInstagramSchema = z.string().regex(/^@[\w.]+$/)
  * Source unique : un seul fichier de contenu, lu par toutes les pages qui affichent un contact.
  */
 export const CoordonneesSchema = z.object({
-  telephone: NumeroTelephoneSchema,
+  /** Optionnel : retiré du site en attente de l'accord du club (décision 2026-09-05). */
+  telephone: NumeroTelephoneSchema.optional(),
   instagram: IdentifiantInstagramSchema,
   lieu: LieuClubSchema,
 })

@@ -12,6 +12,7 @@ const coordonneesEntree = await getEntry('coordonnees', 'coordonnees')
 if (!identite || !coordonneesEntree) throw new Error('Contenu identite-club.md ou coordonnees.md introuvable.')
 const accueil = getAccueil(identite.data)
 const coordonnees = getCoordonnees(coordonneesEntree.data)
+const instagramUrl = `https://www.instagram.com/${coordonnees.instagram.slice(1)}/`
 
 // Visuel : fichier de src/assets servi par le pipeline Astro (URL hachée), résolu depuis le chemin du front-matter.
 const visuels = import.meta.glob<string>('/src/assets/visuels-generes/*.svg', { eager: true, query: '?url', import: 'default' })
@@ -34,7 +35,8 @@ const urlVisuel = visuels[`/src/assets/visuels-generes/${accueil.visuel.asset.sp
       <p style="margin-top:2rem"><a class="bouton" href={accueil.lienRejoindre}>Rejoindre le club</a></p>
       <h2>Nous contacter</h2>
       <p>{coordonnees.lieu.nom}, {coordonnees.lieu.adresse}</p>
-      <BoutonAppel lienAppel={coordonnees.lienAppel} telephone={coordonnees.telephone} />
+      <p>Écrivez-nous sur Instagram : <a href={instagramUrl}>{coordonnees.instagram}</a></p>
+      {coordonnees.lienAppel && coordonnees.telephone && <BoutonAppel lienAppel={coordonnees.lienAppel} telephone={coordonnees.telephone} />}
     </main>
     <Footer />
   </body>

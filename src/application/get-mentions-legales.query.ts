@@ -12,7 +12,7 @@ export interface EditeurSource {
 /** Tranche des coordonnées nécessaire aux mentions légales. */
 export interface CoordonneesSource {
   adresse: string
-  telephone: string
+  telephone?: string
 }
 
 export interface GetMentionsLegalesResult {
@@ -41,7 +41,7 @@ export function getMentionsLegales(
     editeur: mentionsLegales.editeur,
     president: identiteClub.president,
     adresse: coordonnees.adresse,
-    telephone: coordonnees.telephone,
+    telephone: afficherOuACompleter(coordonnees.telephone),
     hebergeur: mentionsLegales.hebergeur,
     numeroRna: afficherOuACompleter(mentionsLegales.numeroRna),
     siret: afficherOuACompleter(mentionsLegales.siret),

@@ -4,7 +4,8 @@ import { MetaPageSchema, COMMUNE, type MetaPage } from '../domain/club-presentat
 import { NOM_CLUB } from '../domain/club-presentation/identite-club.schema'
 
 export interface GetCoordonneesResult extends Coordonnees {
-  lienAppel: string
+  /** Absent quand le téléphone n'est pas publié : aucun bouton d'appel n'est rendu. */
+  lienAppel?: string
   meta: MetaPage
 }
 
@@ -16,10 +17,10 @@ export interface GetCoordonneesResult extends Coordonnees {
 export function getCoordonnees(coordonnees: Coordonnees): GetCoordonneesResult {
   return {
     ...coordonnees,
-    lienAppel: pourLienAppel(coordonnees.telephone),
+    lienAppel: coordonnees.telephone ? pourLienAppel(coordonnees.telephone) : undefined,
     meta: MetaPageSchema.parse({
       titre: `Rejoindre / Contact — ${NOM_CLUB}, ${COMMUNE}`,
-      description: `Contacter le ${NOM_CLUB} à ${COMMUNE} : téléphone, Instagram et adresse du Stade Joseph Ferrero.`,
+      description: `Contacter le ${NOM_CLUB} à ${COMMUNE} : Instagram et adresse du Stade Joseph Ferrero.`,
     }),
   }
 }

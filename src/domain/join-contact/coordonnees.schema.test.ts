@@ -27,4 +27,12 @@ describe('NumeroTelephoneSchema', () => {
     }
     expect(CoordonneesSchema.safeParse(coordonnees).success).toBe(true)
   })
+
+  it('should_accept_coordonnees_when_telephone_est_absent_en_attente_d_accord', () => {
+    const coordonneesSansTelephone = {
+      instagram: '@sporting.club.roquettan',
+      lieu: { nom: 'Stade Joseph Ferrero', adresse: '1955 avenue de la République, 06550 La Roquette-sur-Siagne' },
+    }
+    expect(CoordonneesSchema.safeParse(coordonneesSansTelephone).success).toBe(true)
+  })
 })

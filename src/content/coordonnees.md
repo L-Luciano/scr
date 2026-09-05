@@ -1,5 +1,4 @@
 ---
-telephone: "06 71 58 95 18"
 instagram: "@sporting.club.roquettan"
 lieu:
   nom: "Stade Joseph Ferrero"
