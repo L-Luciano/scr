@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Illustration abstraite rose et anthracite célébrant le partenariat officiel avec SODDY">
+  <title>Illustration abstraite rose et anthracite célébrant le partenariat officiel avec SODDY</title>
+  <defs>
+    <pattern id="diagonales" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+      <line x1="0" y1="0" x2="0" y2="28" stroke="#EC98C9" stroke-width="2" stroke-opacity="0.35" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#1A1A1A" />
+  <rect x="696" width="504" height="630" fill="url(#diagonales)" />
+  <rect x="80" y="534" width="220" height="10" fill="#EC98C9" />
+  <circle cx="1050" cy="315" r="120" fill="none" stroke="#EC98C9" stroke-width="14" />
+  <circle cx="1050" cy="315" r="44" fill="#EC98C9" />
+  <g>
+    <text x="80" y="295" fill="#FFFFFF" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="84" letter-spacing="3" style="text-transform:uppercase">SODDY, PARTENAIRE</text>
+    <text x="80" y="391" fill="#FFFFFF" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="84" letter-spacing="3" style="text-transform:uppercase">OFFICIEL</text>
+  </g>
+  <text x="80" y="586" fill="#EC98C9" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="700" font-size="26" letter-spacing="6">SPORTING CLUB ROQUETTAN</text>
+</svg>

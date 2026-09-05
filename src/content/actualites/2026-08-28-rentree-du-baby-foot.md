@@ -1,6 +1,6 @@
 ---
 titre: "La rentrée du baby-foot, c'est le 12 septembre"
-datePublication: "2026-09-05"
+datePublication: "2026-08-28"
 extrait: "Enfants nés en 2022 et 2023 : samedi 12 septembre à 11 h, premier cours d'essai gratuit au stade."
 visuel:
   asset: "../../assets/visuels-generes/rentree-baby-foot.svg"
