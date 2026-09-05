@@ -59,6 +59,7 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(noms).toEqual(expect.arrayContaining(['Super U Pégomas', 'E.Leclerc Cannes', 'Construction Giagnoni', 'SODDY']))
     expect(noms).not.toContain('AS Monaco')
     expect(dom.window.document.querySelector('a[href="mailto:sporting.club.roquettan@gmail.com"]')).not.toBeNull()
+    expect(dom.window.document.querySelector('a.bouton[href^="mailto:"]')?.textContent).toContain('Nous écrire')
     expect(texteDe(dom)).toContain('Devenir partenaire')
   })
 
