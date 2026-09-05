@@ -1,0 +1,45 @@
+---
+import { getEntry } from 'astro:content'
+import Seo from '../../components/Seo.astro'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import { getProjet } from '../../application/get-projet.query'
+
+const identite = await getEntry('identiteClub', 'identite-club')
+if (!identite) throw new Error('Contenu identite-club.md introuvable.')
+const projet = getProjet(identite.data)
+
+// Développement éditorial des trois piliers (ordre = ordre fixe des piliers du ProjetClub).
+const DEVELOPPEMENTS = [
+  "Le football s'apprend, patiemment. Le club veut des séances préparées, des consignes claires et des progrès mesurés sur une saison plutôt que sur un match. Chacun arrive avec son niveau et son histoire ; personne n'est trié à l'entrée.",
+  "Un terrain enseigne bien plus que le geste juste : attendre son tour, relever la tête après une défaite, respecter l'adversaire et l'arbitre, tenir un engagement pris au groupe. Ce que les joueuses et les joueurs emportent hors du stade compte autant que le reste.",
+  "Le club appartient autant aux parents, aux éducateurs, aux bénévoles et aux dirigeants qu'à celles et ceux qui jouent. Chacun y a une place, et chacun y compte pour les autres.",
+]
+---
+<html lang="fr">
+  <head><Seo meta={projet.meta} /></head>
+  <body>
+    <Header />
+    <main>
+      <p class="accent">Le club · Le projet</p>
+      <h1>Le <em>projet</em></h1>
+      <div class="liseret"></div>
+      <p>Trois engagements résument ce que le club veut être, et ils ne se classent pas par ordre d'importance.</p>
+      <ol class="piliers piliers-detail">
+        {projet.projetClub.piliers.map((pilier, i) => <li>{pilier}<span class="pilier-accroche">{DEVELOPPEMENTS[i]}</span></li>)}
+      </ol>
+      <h2>La mentalité du rugby, l'ambition du football</h2>
+      <p>Le président du club, Nicolas Votano, a passé dix ans dans le rugby et le judo avant de se tourner vers le football. Il en garde une conviction : ce n'est pas le football qui pose problème, c'est parfois la mentalité qui l'entoure, celle qui éloigne certains parents et certains enfants des terrains. Le SCR veut y répondre en construisant un club humain, sans limite dans l'ambition, avec la mentalité et les valeurs du rugby : le respect, la solidarité, l'engagement, l'esprit collectif et le dépassement de soi.</p>
+      <h2>Programme sportif</h2>
+      {projet.programmeSportif && (
+        <div class="programme-sportif">
+          <span class="statut">{projet.programmeSportif.statut} · {projet.programmeSportif.organisme}</span>
+          <span class="nom">{projet.programmeSportif.nom}</span>
+          <p>Pour la saison 2026-2027, le SCR est club satellite au sein du programme Ünseme de l'AS Monaco. Ce lien est purement sportif ; ses modalités détaillées : à compléter par le club.</p>
+        </div>
+      )}
+      <p>Le projet se vit au quotidien à travers <a href="/le-club/valeurs/">les sept valeurs du Carnet</a>, et il est porté par <a href="/equipe/">une équipe</a> de dirigeants et d'éducateurs.</p>
+    </main>
+    <Footer />
+  </body>
+</html>

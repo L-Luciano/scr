@@ -2,29 +2,34 @@ import { describe, it, expect, beforeAll } from 'vitest'
 import { JSDOM } from 'jsdom'
 import { readFile } from 'node:fs/promises'
 
-describe('Page Le club (dist/le-club/index.html)', () => {
-  let dom: JSDOM
+describe('Page Le club (dist/le-club/index.html) et Partenaires', () => {
+  let club: JSDOM
+  let partenaires: JSDOM
 
   beforeAll(async () => {
-    dom = new JSDOM(await readFile('dist/le-club/index.html', 'utf-8'))
+    club = new JSDOM(await readFile('dist/le-club/index.html', 'utf-8'))
+    partenaires = new JSDOM(await readFile('dist/partenaires/index.html', 'utf-8'))
   })
 
-  it('should_display_projet_lieu_and_partenaires_names', () => {
-    const texte = dom.window.document.body.textContent ?? ''
-    expect(texte).toContain('Stade Joseph Ferrero')
-    expect(texte).toContain('1955 avenue de la République')
-    expect(texte).toContain('AS Monaco')
-    expect(texte).toContain('Ünseme')
-    const positionFormer = texte.indexOf('Former des joueurs')
-    const positionGrandir = texte.indexOf('Faire grandir des personnes')
-    const positionFamille = texte.indexOf('Construire une famille')
-    expect(positionFormer).toBeLessThan(positionGrandir)
-    expect(positionGrandir).toBeLessThan(positionFamille)
+  it('should_display_lieu_on_le_club_and_partenaires_names_on_partenaires', () => {
+    const texteClub = club.window.document.body.textContent ?? ''
+    expect(texteClub).toContain('Stade Joseph Ferrero')
+    expect(texteClub).toContain('1955 avenue de la République')
+    const textePartenaires = partenaires.window.document.body.textContent ?? ''
+    expect(textePartenaires).toContain('Super U Pégomas')
+    expect(textePartenaires).toContain('SODDY')
   })
 
-  it('should_display_unseme_name_only_without_any_logo_image', () => {
-    const texte = dom.window.document.body.textContent ?? ''
-    expect(texte).toContain('Ünseme')
-    expect(dom.window.document.querySelector('img[alt*="Ünseme"]')).toBeNull()
+  it('should_display_partner_names_only_without_any_logo_image', () => {
+    expect(partenaires.window.document.querySelector('ul.partenaires img')).toBeNull()
+  })
+
+  it('should_mention_club_satellite_literally_on_the_project_page_without_interpretation', async () => {
+    const projet = new JSDOM(await readFile('dist/le-club/projet/index.html', 'utf-8'))
+    const t = projet.window.document.body.textContent ?? ''
+    expect(t.toLowerCase()).toContain('club satellite')
+    expect(t).toContain('AS Monaco')
+    expect(t).toContain('Ünseme')
+    expect(t).not.toMatch(/centre de formation|détection|académie/i)
   })
 })

@@ -23,7 +23,7 @@ const initiales = (nom: string) => nom.split(/\s+/).map(m => m[0]).join('').slic
     <main>
       <h1>L'<em>équipe</em></h1>
       <div class="liseret"></div>
-      <p>Un club neuf se reconnaît à celles et ceux qui le portent. Voici les dirigeants du Sporting Club Roquettan et le message qu'ils adressent aux familles.</p>
+      <p>Un club neuf se reconnaît à celles et ceux qui le portent. Voici les dirigeants et l'encadrement du Sporting Club Roquettan, et le message que les dirigeants adressent aux familles.</p>
       <ul class="membres">
         {rendus.map(({ membre, Content }) => (
           <li class="membre">
@@ -40,8 +40,8 @@ const initiales = (nom: string) => nom.split(/\s+/).map(m => m[0]).join('').slic
           </li>
         ))}
       </ul>
-      <h2>Le staff technique</h2>
-      <p>La direction sportive est assurée par Nicolas Longo. Le staff réunit des éducateurs bien connus à La Roquette-sur-Siagne et de nouveaux visages venus renforcer le projet ; leur présentation détaillée : à compléter par le club.</p>
+      <h2>Les éducateurs</h2>
+      <p>Le staff technique de la saison 2026-2027 réunit des éducateurs bien connus à La Roquette-sur-Siagne et de nouveaux visages venus renforcer le projet. Leur présentation détaillée : à compléter par le club.</p>
     </main>
     <Footer />
   </body>

@@ -1,0 +1,26 @@
+---
+import { getEntry, render } from 'astro:content'
+import Seo from '../components/Seo.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { getCategories } from '../application/get-categories.query'
+
+const entree = await getEntry('categories', 'categories')
+if (!entree) throw new Error('Contenu categories.md introuvable.')
+const categories = getCategories(entree.data)
+const { Content } = await render(entree)
+---
+<html lang="fr">
+  <head><Seo meta={categories.meta} /></head>
+  <body>
+    <Header />
+    <main>
+      <h1>Caté<em>gories</em></h1>
+      <div class="liseret"></div>
+      <p class="accroche">{categories.introduction}</p>
+      <Content />
+      <p class="actions"><a class="bouton" href="/rejoindre">Nous contacter</a></p>
+    </main>
+    <Footer />
+  </body>
+</html>

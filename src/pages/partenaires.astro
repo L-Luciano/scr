@@ -1,0 +1,35 @@
+---
+import { getEntry } from 'astro:content'
+import Seo from '../components/Seo.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import PartenaireBadge from '../components/PartenaireBadge.astro'
+import { getPartenaires } from '../application/get-partenaires.query'
+import { getCoordonnees } from '../application/get-coordonnees.query'
+
+const identite = await getEntry('identiteClub', 'identite-club')
+const coordonneesEntree = await getEntry('coordonnees', 'coordonnees')
+if (!identite || !coordonneesEntree) throw new Error('Contenu identite-club.md ou coordonnees.md introuvable.')
+const partenaires = getPartenaires(identite.data)
+const coordonnees = getCoordonnees(coordonneesEntree.data)
+---
+<html lang="fr">
+  <head><Seo meta={partenaires.meta} /></head>
+  <body>
+    <Header />
+    <main>
+      <h1>Parte<em>naires</em></h1>
+      <div class="liseret"></div>
+      <p>Des entreprises du territoire ont choisi de soutenir le projet dès sa première saison. Leur confiance représente énormément pour un club qui écrit les premières pages de son histoire.</p>
+      <h2>Ils nous accompagnent en 2026-2027</h2>
+      <ul class="partenaires">
+        {partenaires.partenaires.map(partenaire => <PartenaireBadge partenaire={partenaire} />)}
+      </ul>
+      <p>Super U Pégomas est partenaire Platine ; E.Leclerc Cannes, Construction Giagnoni et SODDY sont partenaires officiels. Le partenariat sportif avec l'AS Monaco relève du <a href="/le-club/projet/">programme Ünseme</a>, présenté dans le projet du club.</p>
+      <h2>Devenir partenaire</h2>
+      <p>Le Sporting Club Roquettan grandit et veut construire cette aventure avec les acteurs de son territoire. Soutenir le SCR, c'est accompagner un projet tourné vers la jeunesse, les valeurs, le sport et la vie locale, et associer votre entreprise à une aventure qui commence. Entreprises, commerçants, artisans : plusieurs formules existent pour accompagner le club à votre niveau.</p>
+      {coordonnees.email && <p class="actions"><a class="bouton" href={`mailto:${coordonnees.email}`}>Découvrir les formules de partenariat</a><span>{coordonnees.email}</span></p>}
+    </main>
+    <Footer />
+  </body>
+</html>

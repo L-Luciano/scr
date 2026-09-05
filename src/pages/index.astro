@@ -42,7 +42,7 @@ const urlVisuel = visuels[`/src/assets/visuels-generes/${accueil.visuel.asset.sp
         {accueil.projetClub.piliers.map((pilier, i) => <li>{pilier}<span class="pilier-accroche">{ACCROCHES_PILIERS[i]}</span></li>)}
       </ol>
       <p class="mentalite">Un club humain, sans limite dans l'ambition : le SCR veut construire un club de football avec la mentalité et les valeurs du rugby. Son entrée dans le programme Ünseme de l'AS Monaco, comme club satellite, marque sa première saison.</p>
-      <p class="actions"><a class="bouton" href={accueil.lienRejoindre}>Rejoindre le club</a> <a class="lien-secondaire" href="/le-club">Découvrir le projet</a></p>
+      <p class="actions"><a class="bouton" href={accueil.lienRejoindre}>Rejoindre le club</a> <a class="lien-secondaire" href="/le-club/projet">Découvrir le projet</a></p>
       <h2>Nous trouver, nous écrire</h2>
       <p>Le club vit au {coordonnees.lieu.nom}, {coordonnees.lieu.adresse} (<a href={lienCarte(coordonnees.lieu)} rel="noopener">itinéraire</a>). Venez nous voir au stade un soir d'entraînement, ou écrivez-nous : nous répondons à toutes vos questions.</p>
       <p>Instagram : <a href={instagramUrl}>{coordonnees.instagram}</a>{coordonnees.email && <> · E-mail : <a href={`mailto:${coordonnees.email}`}>{coordonnees.email}</a></>}</p>

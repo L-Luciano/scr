@@ -5,6 +5,8 @@ import { IdentiteClubSchema } from './domain/club-presentation/identite-club.sch
 import { CoordonneesSchema } from './domain/join-contact/coordonnees.schema'
 import { MentionsLegalesSchema } from './domain/club-presentation/mentions-legales.schema'
 import { MembreSchema } from './domain/club-presentation/membre.schema'
+import { ValeurSchema } from './domain/club-presentation/valeur.schema'
+import { CategoriesSchema } from './domain/club-presentation/categories.schema'
 
 /**
  * Câblage des schémas Zod du domaine sur les content collections Astro (ADR-002) :
@@ -36,4 +38,14 @@ const membres = defineCollection({
   schema: MembreSchema,
 })
 
-export const collections = { actualites, identiteClub, coordonnees, mentionsLegales, membres }
+const valeurs = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/valeurs' }),
+  schema: ValeurSchema,
+})
+
+const categories = defineCollection({
+  loader: glob({ pattern: 'categories.md', base: './src/content' }),
+  schema: CategoriesSchema,
+})
+
+export const collections = { actualites, identiteClub, coordonnees, mentionsLegales, membres, valeurs, categories }

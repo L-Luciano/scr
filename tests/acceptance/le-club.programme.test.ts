@@ -6,7 +6,7 @@ describe('Page Le club — programme sportif distinct des partenaires', () => {
   let dom: JSDOM
 
   beforeAll(async () => {
-    dom = new JSDOM(await readFile('dist/le-club/index.html', 'utf-8'))
+    dom = new JSDOM(await readFile('dist/le-club/projet/index.html', 'utf-8'))
   })
 
   it('should_present_unseme_as_a_programme_and_not_as_a_partenaire', () => {
@@ -14,9 +14,6 @@ describe('Page Le club — programme sportif distinct des partenaires', () => {
     expect(programme).toContain('Programme Ünseme')
     expect(programme).toContain('AS Monaco')
     expect(programme).toContain('Club satellite')
-    const partenaires = [...dom.window.document.querySelectorAll('ul.partenaires li')].map(li => li.textContent?.trim())
-    expect(partenaires).not.toContain('AS Monaco')
-    expect(partenaires).not.toContain('Ünseme')
-    expect(partenaires).toContain('Super U Pégomas')
+    expect(dom.window.document.querySelector('ul.partenaires')).toBeNull()
   })
 })

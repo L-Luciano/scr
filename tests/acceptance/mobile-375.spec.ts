@@ -22,7 +22,7 @@ test.describe('Accueil — mobile 375px', () => {
 test.describe('Chargement mobile des 4 pages', () => {
   test.use({ viewport: VIEWPORT_MOBILE })
 
-  for (const route of ['/', '/le-club', '/equipe', '/actualites', '/rejoindre']) {
+  for (const route of ['/', '/le-club', '/le-club/projet', '/le-club/valeurs', '/categories', '/equipe', '/actualites', '/partenaires', '/rejoindre']) {
     test(`should_load_without_error_when_visiting_${route}_on_mobile`, async ({ page }) => {
       const response = await page.goto(route)
       expect(response?.status()).toBeLessThan(400)
@@ -42,6 +42,7 @@ test.describe('Menu mobile 375px', () => {
     await boutonMenu.click()
     await expect(lienEquipe).toBeVisible()
     await expect(page.locator('header details.menu nav a[href="/rejoindre"]')).toBeVisible()
+    await expect(page.locator('header details.menu nav a[href="/le-club/valeurs"]')).toBeVisible()
   })
 
   test('should_not_require_horizontal_scroll_on_rejoindre_page', async ({ page }) => {

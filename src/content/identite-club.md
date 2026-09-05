@@ -32,39 +32,10 @@ L'accueil a été immédiat. Dès le premier jour de la rentrée, plus de cent l
 
 Un club qui commence a cet avantage rare : rien n'y est encore figé. Les habitudes, le ton des vestiaires, la façon d'accueillir celui qui pousse la porte pour la première fois s'écrivent aujourd'hui, avec celles et ceux qui sont là.
 
-## Notre projet
+## L'esprit maison
 
-Trois engagements résument ce que le club veut être, et ils ne se classent pas par ordre d'importance.
+Le Stade Joseph Ferrero est le point de rendez-vous du club. On y vient s'entraîner, jouer, encourager, ou simplement prendre des nouvelles. Le SCR tient à ce que ce lieu reste ouvert et accueillant : une famille qui découvre le club doit pouvoir venir voir avant de s'engager, poser ses questions et repartir avec des réponses.
 
-**Former des joueurs.** Le football s'apprend, patiemment. Le club veut des séances préparées, des consignes claires et des progrès mesurés sur une saison plutôt que sur un match. Chacun arrive avec son niveau et son histoire ; personne n'est trié à l'entrée.
+## Pour aller plus loin
 
-**Faire grandir des personnes.** Un terrain enseigne bien plus que le geste juste : attendre son tour, relever la tête après une défaite, respecter l'adversaire et l'arbitre, tenir un engagement pris au groupe. Ce que les joueuses et les joueurs emportent hors du stade compte autant que le reste.
-
-**Construire une famille.** Le club appartient autant aux parents, aux éducateurs, aux bénévoles et aux dirigeants qu'à celles et ceux qui jouent. Chacun y a une place, et chacun y compte pour les autres.
-
-## La mentalité du rugby, l'ambition du football
-
-Le président du club, Nicolas Votano, a passé dix ans dans le rugby et le judo avant de se tourner vers le football. Il en garde une conviction : ce n'est pas le football qui pose problème, c'est parfois la mentalité qui l'entoure, celle qui éloigne certains parents et certains enfants des terrains. Le SCR veut y répondre en construisant un club humain, sans limite dans l'ambition, avec la mentalité et les valeurs du rugby : le respect, la solidarité, l'engagement, l'esprit collectif et le dépassement de soi.
-
-## Le Carnet des Valeurs
-
-Au SCR, les valeurs ne restent pas des mots. Un Carnet des Valeurs est remis aux membres du club, et chacun, joueur, éducateur, dirigeant ou parent, s'engage en le signant à respecter les sept principes qui font l'identité du club. Le club les dévoile une à une au fil de la saison.
-
-- **La transparence.** La confiance se construit par le dialogue : une gestion claire, des décisions expliquées, et des éducateurs, des joueurs, des parents et des dirigeants qui peuvent se parler librement.
-- **Le travail.** Le talent ouvre la porte, seul le travail la laisse ouverte : chaque entraînement est une occasion de progresser, et l'effort compte davantage que les facilités naturelles, pour les joueurs comme pour l'encadrement.
-- **L'abnégation.** Se dépasser pour l'équipe, sans compter : continuer quand l'effort devient difficile, revenir défendre, encourager un coéquipier, rester concentré jusqu'à la dernière minute, et savoir mettre son intérêt personnel de côté pour celui du groupe. Au SCR, on ne joue pas seulement les uns avec les autres, mais les uns pour les autres.
-- **Les autres valeurs** : à découvrir au fil de la saison sur les réseaux du club, puis ici.
-
-## L'encadrement
-
-Le club est présidé par Nicolas Votano, épaulé par Yann Le Caharec, vice-président. Leurs parcours et leurs messages sont à lire sur la page [L'équipe](/equipe/). La direction sportive est assurée par Nicolas Longo. Le staff technique réunit des éducateurs bien connus à La Roquette-sur-Siagne et de nouveaux visages venus renforcer le projet ; leur présentation détaillée : à compléter par le club.
-
-## Nos partenaires
-
-**Partenaires financiers.** Des entreprises du territoire ont choisi de soutenir le projet dès sa première saison : Super U Pégomas, partenaire Platine, ainsi que E.Leclerc Cannes, Construction Giagnoni et SODDY, partenaires officiels. Leur confiance représente énormément pour un club qui écrit les premières pages de son histoire.
-
-**Devenir partenaire.** Entreprises, commerçants, artisans : plusieurs formules existent pour accompagner le club à votre niveau. Écrivez-nous à sporting.club.roquettan@gmail.com pour découvrir les différents packages.
-
-## Catégories, horaires et tarifs
-
-Le club accueille les joueuses et les joueurs de U6 à U17. Les plus petits, nés en 2022 et 2023, ont leur rendez-vous de baby-foot tous les samedis de 11 h à 12 h au Stade Joseph Ferrero, avec un premier cours d'essai gratuit. Les horaires des autres catégories et le montant des licences : à compléter par le club. En attendant, écrivez-nous sur Instagram, à @sporting.club.roquettan, ou venez nous rencontrer au stade.
+Le [projet du club](/le-club/projet/) dit ce que nous voulons construire, [nos valeurs](/le-club/valeurs/) disent comment nous nous comportons, et [l'équipe](/equipe/) présente celles et ceux qui portent l'aventure.

@@ -3,7 +3,6 @@ import { getEntry, render } from 'astro:content'
 import Seo from '../components/Seo.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
-import PartenaireBadge from '../components/PartenaireBadge.astro'
 import { getLeClub } from '../application/get-le-club.query'
 import { lienCarte } from '../domain/club-presentation/identite-club.schema'
 
@@ -17,26 +16,12 @@ const { Content } = await render(identite)
   <body>
     <Header />
     <main>
+      <p class="accent">Le club · Présentation</p>
       <h1>Le <em>club</em></h1>
       <div class="liseret"></div>
-      <ol class="piliers">
-        {leClub.projetClub.piliers.map(pilier => <li>{pilier}</li>)}
-      </ol>
+      <Content />
       <h2>Où nous trouver</h2>
       <p>{leClub.lieuClub.nom}, {leClub.lieuClub.adresse} · <a href={lienCarte(leClub.lieuClub)} rel="noopener">Voir sur la carte</a></p>
-      <h2>Programme sportif</h2>
-      {leClub.programmeSportif && (
-        <div class="programme-sportif">
-          <span class="statut">{leClub.programmeSportif.statut} · {leClub.programmeSportif.organisme}</span>
-          <span class="nom">{leClub.programmeSportif.nom}</span>
-          <p>Pour la saison 2026-2027, le SCR est club satellite au sein du programme Ünseme de l'AS Monaco. Ce lien est purement sportif ; ses modalités détaillées : à compléter par le club.</p>
-        </div>
-      )}
-      <h2>Partenaires</h2>
-      <ul class="partenaires">
-        {leClub.partenaires.map(partenaire => <PartenaireBadge partenaire={partenaire} />)}
-      </ul>
-      <Content />
     </main>
     <Footer />
   </body>

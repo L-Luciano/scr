@@ -26,4 +26,9 @@ describe('Navigation — indication de la page courante', () => {
     const actifs = [...dom.window.document.querySelectorAll('header details.menu nav a[aria-current="page"]')].map(a => a.getAttribute('href'))
     expect(actifs).toEqual(['/equipe'])
   })
+
+  it('should_mark_le_club_group_and_the_sub_page_as_current_on_le_projet', async () => {
+    const dom = new JSDOM(await readFile('dist/le-club/projet/index.html', 'utf-8'))
+    expect(lienActif(dom)).toEqual(['/le-club', '/le-club/projet'])
+  })
 })

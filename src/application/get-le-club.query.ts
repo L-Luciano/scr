@@ -22,7 +22,7 @@ export function getLeClub(identiteClub: IdentiteClub): GetLeClubResult {
     programmeSportif: identiteClub.programmeSportif,
     meta: MetaPageSchema.parse({
       titre: `Le club — ${NOM_CLUB}, ${COMMUNE}`,
-      description: `Le projet, le stade et les partenaires du ${NOM_CLUB}, club de football fondé en 2026 à ${COMMUNE}. Venez nous rencontrer.`,
+      description: `Présentation du ${NOM_CLUB}, club de football né en 2026 à ${COMMUNE} : son histoire qui commence, son stade et l'esprit maison.`,
     }),
   }
 }

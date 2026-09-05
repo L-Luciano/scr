@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content'
+import Seo from '../../components/Seo.astro'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import { getValeurs } from '../../application/get-valeurs.query'
+
+const entrees = await getCollection('valeurs')
+const valeurs = getValeurs(entrees.map(e => e.data))
+const rendus = new Map<number, Awaited<ReturnType<typeof render>>['Content']>()
+for (const entree of entrees) rendus.set(entree.data.numero, (await render(entree)).Content)
+---
+<html lang="fr">
+  <head><Seo meta={valeurs.meta} /></head>
+  <body>
+    <Header />
+    <main>
+      <p class="accent">Le club · Les valeurs</p>
+      <h1>Le Carnet des <em>Valeurs</em></h1>
+      <div class="liseret"></div>
+      <p>Au SCR, les valeurs ne restent pas des mots. Un Carnet des Valeurs est remis aux membres du club, et chacun, joueur, éducateur, dirigeant ou parent, s'engage en le signant à respecter les sept principes qui font l'identité du club. Le club les dévoile une à une au fil de la saison.</p>
+      <ol class="valeurs">
+        {valeurs.cartes.map(carte => {
+          const Contenu = carte.revelee ? rendus.get(carte.numero) : undefined
+          return (
+            <li class={`valeur${carte.revelee ? ' revelee' : ''}`}>
+              <span class="numero">{String(carte.numero).padStart(2, '0')} / 07</span>
+              {carte.revelee ? (
+                <>
+                  <h2>{carte.nom}</h2>
+                  <blockquote><p>« {carte.devise} »</p></blockquote>
+                  {Contenu && <Contenu />}
+                </>
+              ) : (
+                <>
+                  <h2>Valeur à venir</h2>
+                  <p>Cette valeur est à découvrir prochainement sur les réseaux du club, puis ici.</p>
+                </>
+              )}
+            </li>
+          )
+        })}
+      </ol>
+    </main>
+    <Footer />
+  </body>
+</html>
