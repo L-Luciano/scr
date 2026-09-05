@@ -11,6 +11,8 @@ export const MembreSchema = z.object({
   role: z.string({ error: MESSAGE_ROLE }).min(1, { error: MESSAGE_ROLE }),
   ordre: z.number().int().positive(),
   message: z.string().min(1).optional(),
+  /** Bureau (dirigeants élus) ou staff technique (encadrement sportif). */
+  groupe: z.enum(['bureau', 'staff']).default('bureau'),
 })
 
 export type Membre = z.infer<typeof MembreSchema>

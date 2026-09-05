@@ -47,7 +47,7 @@ describe('Architecture du site — pages issues de la restructuration', () => {
   })
 
   it('should_list_coordinateur_and_responsable_foot_reduit_on_equipe', async () => {
-    const t = texteDe(await lire('dist/equipe/index.html'))
+    const t = texteDe(await lire('dist/le-club/bureau/index.html'))
     expect(t).toContain('Franck Moreau')
     expect(t).toContain('Coordinateur sportif')
     expect(t).toContain('Benjamin Guibal')
@@ -62,8 +62,8 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(texteDe(dom)).toContain('Devenir partenaire')
   })
 
-  it('should_merge_the_staff_into_the_equipe_page', async () => {
-    const t = texteDe(await lire('dist/equipe/index.html'))
+  it('should_merge_the_staff_into_le_bureau_page', async () => {
+    const t = texteDe(await lire('dist/le-club/bureau/index.html'))
     expect(t).toContain('Nicolas Longo')
     expect(t).toContain('Directeur sportif')
   })
@@ -71,8 +71,8 @@ describe('Architecture du site — pages issues de la restructuration', () => {
   it('should_offer_a_two_level_navigation_with_le_club_group_and_six_top_entries', async () => {
     const dom = await lire('dist/index.html')
     const sousLiens = [...dom.window.document.querySelectorAll('header .nav-bureau .sous-menu a')].map(a => a.getAttribute('href'))
-    expect(sousLiens).toEqual(['/le-club', '/le-club/projet', '/le-club/valeurs'])
+    expect(sousLiens).toEqual(['/le-club', '/le-club/projet', '/le-club/valeurs', '/le-club/bureau'])
     const principaux = [...dom.window.document.querySelectorAll('header .nav-bureau > a, header .nav-bureau > .groupe > a')].map(a => a.getAttribute('href'))
-    expect(principaux).toEqual(['/', '/le-club', '/categories', '/equipe', '/actualites', '/partenaires', '/rejoindre'])
+    expect(principaux).toEqual(['/', '/le-club', '/categories', '/actualites', '/partenaires', '/rejoindre'])
   })
 })

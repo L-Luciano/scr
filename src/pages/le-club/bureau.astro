@@ -1,9 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content'
-import Seo from '../components/Seo.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
-import { getEquipe } from '../application/get-equipe.query'
+import Seo from '../../components/Seo.astro'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import { getEquipe } from '../../application/get-equipe.query'
 
 const entrees = await getCollection('membres')
 const equipe = getEquipe(entrees.map(e => e.data))
@@ -21,11 +21,12 @@ const initiales = (nom: string) => nom.split(/\s+/).map(m => m[0]).join('').slic
   <body>
     <Header />
     <main>
-      <h1>L'<em>équipe</em></h1>
+      <p class="accent">Le club · Le bureau</p>
+      <h1>Le <em>bureau</em></h1>
       <div class="liseret"></div>
-      <p>Un club neuf se reconnaît à celles et ceux qui le portent. Voici les dirigeants et l'encadrement du Sporting Club Roquettan, et le message que les dirigeants adressent aux familles.</p>
-      <ul class="membres">
-        {rendus.map(({ membre, Content }) => (
+      <p>Un club neuf se reconnaît à celles et ceux qui le portent. Voici les dirigeants du Sporting Club Roquettan et le message qu'ils adressent aux familles, puis le staff technique qui encadre les joueuses et les joueurs.</p>
+      <ul class="membres bureau">
+        {rendus.filter(r => r.membre.groupe === 'bureau').map(({ membre, Content }) => (
           <li class="membre">
             <span class="initiales" aria-hidden="true">{initiales(membre.nom)}</span>
             <span class="role">{membre.role}</span>
@@ -36,6 +37,17 @@ const initiales = (nom: string) => nom.split(/\s+/).map(m => m[0]).join('').slic
                 <footer>{membre.nom}, {membre.role.toLowerCase()} du Sporting Club Roquettan</footer>
               </blockquote>
             )}
+            <Content />
+          </li>
+        ))}
+      </ul>
+      <h2>Le staff technique</h2>
+      <ul class="membres staff">
+        {rendus.filter(r => r.membre.groupe === 'staff').map(({ membre, Content }) => (
+          <li class="membre">
+            <span class="initiales" aria-hidden="true">{initiales(membre.nom)}</span>
+            <span class="role">{membre.role}</span>
+            <h2>{membre.nom}</h2>
             <Content />
           </li>
         ))}

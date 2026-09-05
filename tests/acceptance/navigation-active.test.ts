@@ -22,9 +22,9 @@ describe('Navigation — indication de la page courante', () => {
   })
 
   it('should_mark_the_current_link_in_the_mobile_menu_too', async () => {
-    const dom = new JSDOM(await readFile('dist/equipe/index.html', 'utf-8'))
+    const dom = new JSDOM(await readFile('dist/le-club/bureau/index.html', 'utf-8'))
     const actifs = [...dom.window.document.querySelectorAll('header details.menu nav a[aria-current="page"]')].map(a => a.getAttribute('href'))
-    expect(actifs).toEqual(['/equipe'])
+    expect(actifs).toEqual(['/le-club', '/le-club/bureau'])
   })
 
   it('should_mark_le_club_group_and_the_sub_page_as_current_on_le_projet', async () => {

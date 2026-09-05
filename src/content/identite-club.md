@@ -38,4 +38,4 @@ Le Stade Joseph Ferrero est le point de rendez-vous du club. On y vient s'entra�
 
 ## Pour aller plus loin
 
-Le [projet du club](/le-club/projet/) dit ce que nous voulons construire, [nos valeurs](/le-club/valeurs/) disent comment nous nous comportons, et [l'équipe](/equipe/) présente celles et ceux qui portent l'aventure.
+Le [projet du club](/le-club/projet/) dit ce que nous voulons construire, [nos valeurs](/le-club/valeurs/) disent comment nous nous comportons, et [le bureau](/le-club/bureau/) présente celles et ceux qui portent l'aventure.
