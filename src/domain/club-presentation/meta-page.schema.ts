@@ -1,7 +1,8 @@
 import { z } from 'zod'
 import { NOM_CLUB } from './identite-club.schema'
 
-const COMMUNE = 'La Roquette-sur-Siagne'
+/** Commune du club — connaissance unique, réutilisée par les méta-données de chaque page. */
+export const COMMUNE = 'La Roquette-sur-Siagne'
 
 const mentionneLeClubEtLaCommune = (texte: string) => texte.includes(NOM_CLUB) && texte.includes(COMMUNE)
 const MESSAGE = `Le texte doit mentionner « ${NOM_CLUB} » et « ${COMMUNE} ».`
