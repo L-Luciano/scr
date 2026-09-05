@@ -1,0 +1,23 @@
+{
+  "name": "scr-site",
+  "version": "1.0.0",
+  "description": "Site vitrine du Sporting Club Roquettan",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "@types/node": "26.4.1",
+    "typescript": "7.0.2",
+    "vitest": "5.0.0",
+    "zod": "4.5.4"
+  }
+}
