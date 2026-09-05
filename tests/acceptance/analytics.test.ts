@@ -24,4 +24,12 @@ describe('Mesure d’audience Vercel Web Analytics', () => {
       expect(scripts.some(s => s.includes('/_vercel/insights')), fichier).toBe(true)
     }
   })
+
+  it('should_embed_the_vercel_speed_insights_script_on_every_page', () => {
+    for (const fichier of trouverTousLesIndexHtml('dist')) {
+      const dom = new JSDOM(readFileSync(fichier, 'utf-8'))
+      const scripts = [...dom.window.document.querySelectorAll('script')].map(s => (s.getAttribute('src') ?? '') + (s.textContent ?? ''))
+      expect(scripts.some(s => s.includes('/_vercel/speed-insights')), fichier).toBe(true)
+    }
+  })
 })

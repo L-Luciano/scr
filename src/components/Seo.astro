@@ -1,6 +1,7 @@
 ---
 import type { MetaPage } from '../domain/club-presentation/meta-page.schema'
 import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from '@vercel/speed-insights/astro'
 interface Props { meta: MetaPage }
 const { meta } = Astro.props
 ---
@@ -11,3 +12,5 @@ const { meta } = Astro.props
 <link rel="icon" href="/assets/logo-scr-720.jpg" />
 <!-- Mesure d'audience Vercel Web Analytics : sans cookie ni identifiant persistant (décision utilisateur 2026-09-05). -->
 <Analytics />
+<!-- Mesure des performances (Web Vitals) Vercel Speed Insights, anonyme (décision utilisateur 2026-09-05). -->
+<SpeedInsights />
