@@ -48,7 +48,12 @@ Le président du club, Nicolas Votano, a passé dix ans dans le rugby et le judo
 
 ## Le Carnet des Valeurs
 
-Au SCR, les valeurs ne restent pas des mots. Un Carnet des Valeurs est remis aux membres du club, et chacun, joueur, éducateur, dirigeant ou parent, s'engage en le signant à respecter les sept principes qui font l'identité du club. Parmi eux, la transparence, parce que la confiance se construit par le dialogue, et le travail, parce que le talent ouvre la porte mais que seul le travail la laisse ouverte.
+Au SCR, les valeurs ne restent pas des mots. Un Carnet des Valeurs est remis aux membres du club, et chacun, joueur, éducateur, dirigeant ou parent, s'engage en le signant à respecter les sept principes qui font l'identité du club. Le club les dévoile une à une au fil de la saison.
+
+- **La transparence.** La confiance se construit par le dialogue : une gestion claire, des décisions expliquées, et des éducateurs, des joueurs, des parents et des dirigeants qui peuvent se parler librement.
+- **Le travail.** Le talent ouvre la porte, seul le travail la laisse ouverte : chaque entraînement est une occasion de progresser, et l'effort compte davantage que les facilités naturelles, pour les joueurs comme pour l'encadrement.
+- **L'abnégation.** Se dépasser pour l'équipe, sans compter : continuer quand l'effort devient difficile, revenir défendre, encourager un coéquipier, rester concentré jusqu'à la dernière minute, et savoir mettre son intérêt personnel de côté pour celui du groupe. Au SCR, on ne joue pas seulement les uns avec les autres, mais les uns pour les autres.
+- **Les autres valeurs** : à découvrir au fil de la saison sur les réseaux du club, puis ici.
 
 ## L'encadrement
 
