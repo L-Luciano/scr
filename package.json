@@ -6,7 +6,8 @@
   "scripts": {
     "test": "vitest run",
     "build": "astro build",
-    "visuel": "tsx scripts/generer-visuel.ts"
+    "visuel": "tsx scripts/generer-visuel.ts",
+    "test:mobile": "playwright test tests/acceptance/mobile-375.spec.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "node": ">=24"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@types/jsdom": "30.0.0",
     "@types/node": "26.4.1",
     "execa": "10.0.1",
