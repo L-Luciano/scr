@@ -30,6 +30,14 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   h1, h2, h3 { text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.15; }
   h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 1rem; }
   h1 em, .accent { color: var(--accent); font-style: normal; }
+  /* Intertitres en rose de la charte, avec un court liseré : hiérarchie visible dans les pages de contenu. */
+  main h2 { color: var(--accent); font-size: clamp(1.35rem, 3vw, 1.75rem); margin: 2.5rem 0 0.75rem; padding-top: 0.75rem; position: relative; }
+  main h2::before { content: ""; display: block; width: 3rem; height: 3px; background: var(--accent); margin-bottom: 0.75rem; }
+  main h3 { color: var(--accent); font-size: 1.1rem; margin: 1.75rem 0 0.5rem; }
+  .carte h2, .membre h2 { color: var(--texte); font-size: 1.35rem; margin: 0.5rem 0; padding-top: 0; }
+  .carte h2::before, .membre h2::before { display: none; }
+  .carte h2 a { color: var(--texte); text-decoration: none; }
+  main strong { color: var(--accent); }
   a { color: var(--accent); }
   img { max-width: 100%; height: auto; display: block; }
   .visuel { border: 2px solid var(--accent); border-radius: 0.5rem; margin: 1.5rem 0; }
