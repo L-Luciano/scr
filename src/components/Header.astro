@@ -49,6 +49,16 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin: 2rem 0; }
   .lien-secondaire { color: var(--texte); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem; }
   .etapes { padding-left: 1.25rem; display: grid; gap: 0.75rem; }
+  .programme-sportif { border: 2px solid var(--accent); border-radius: 0.5rem; padding: 1.25rem 1.5rem; margin: 1rem 0 2rem; display: grid; gap: 0.35rem; }
+  .programme-sportif .statut { color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 700; }
+  .programme-sportif .nom { font-size: 1.4rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+  .membres { display: grid; gap: 2rem; padding: 0; margin: 0; list-style: none; }
+  .membre { border: 1px solid var(--accent); border-radius: 0.5rem; padding: 1.5rem; display: grid; gap: 0.75rem; }
+  .membre .initiales { width: 4rem; height: 4rem; border-radius: 50%; background: var(--accent); color: var(--fond); display: grid; place-items: center; font-weight: 800; font-size: 1.4rem; letter-spacing: 0.05em; }
+  .membre .role { color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 700; }
+  .membre h2 { margin: 0; font-size: 1.5rem; }
+  .membre blockquote { margin: 0.5rem 0 0; padding-left: 1rem; border-left: 4px solid var(--accent); font-size: 1.1rem; font-style: italic; }
+  .membre blockquote footer { font-style: normal; font-size: 0.85rem; opacity: 0.8; margin-top: 0.4rem; }
 `
 ---
 <header class="entete">
@@ -59,6 +69,7 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   <nav aria-label="Navigation principale">
     <a href="/">Accueil</a>
     <a href="/le-club">Le club</a>
+    <a href="/equipe">L'équipe</a>
     <a href="/actualites">Actualités</a>
     <a class="cta" href="/rejoindre">Rejoindre / Contact</a>
   </nav>

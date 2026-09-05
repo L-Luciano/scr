@@ -22,7 +22,7 @@ test.describe('Accueil — mobile 375px', () => {
 test.describe('Chargement mobile des 4 pages', () => {
   test.use({ viewport: VIEWPORT_MOBILE })
 
-  for (const route of ['/', '/le-club', '/actualites', '/rejoindre']) {
+  for (const route of ['/', '/le-club', '/equipe', '/actualites', '/rejoindre']) {
     test(`should_load_without_error_when_visiting_${route}_on_mobile`, async ({ page }) => {
       const response = await page.goto(route)
       expect(response?.status()).toBeLessThan(400)

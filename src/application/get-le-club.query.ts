@@ -6,6 +6,7 @@ export interface GetLeClubResult {
   projetClub: IdentiteClub['projetClub']
   lieuClub: IdentiteClub['lieuClub']
   partenaires: IdentiteClub['partenaires']
+  programmeSportif: IdentiteClub['programmeSportif']
   meta: MetaPage
 }
 
@@ -18,6 +19,7 @@ export function getLeClub(identiteClub: IdentiteClub): GetLeClubResult {
     projetClub: identiteClub.projetClub,
     lieuClub: identiteClub.lieuClub,
     partenaires: identiteClub.partenaires,
+    programmeSportif: identiteClub.programmeSportif,
     meta: MetaPageSchema.parse({
       titre: `Le club — ${NOM_CLUB}, ${COMMUNE}`,
       description: `Le projet, le stade et les partenaires du ${NOM_CLUB}, club de football fondé en 2026 à ${COMMUNE}. Venez nous rencontrer.`,

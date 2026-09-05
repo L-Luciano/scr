@@ -11,6 +11,13 @@ export const LieuClubSchema = z.object({
   adresse: z.string().min(1),
 })
 
+/** Programme sportif auquel le club est rattaché (distinct des partenaires financiers). */
+export const ProgrammeSportifSchema = z.object({
+  nom: z.string().min(1),
+  organisme: z.string().min(1),
+  statut: z.string().min(1),
+})
+
 /** Projet du club : exactement trois piliers, dans un ordre fixe. */
 const ProjetClubSchema = z.object({
   piliers: z.tuple([z.string().min(1), z.string().min(1), z.string().min(1)]),
@@ -28,8 +35,10 @@ export const IdentiteClubSchema = z.object({
   projetClub: ProjetClubSchema,
   lieuClub: LieuClubSchema,
   partenaires: z.array(PartenaireSchema),
+  programmeSportif: ProgrammeSportifSchema.optional(),
 })
 
 export type LieuClub = z.infer<typeof LieuClubSchema>
 export type ProjetClub = z.infer<typeof ProjetClubSchema>
+export type ProgrammeSportif = z.infer<typeof ProgrammeSportifSchema>
 export type IdentiteClub = z.infer<typeof IdentiteClubSchema>

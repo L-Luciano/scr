@@ -53,4 +53,19 @@ describe('IdentiteClubSchema', () => {
     }
     expect(IdentiteClubSchema.safeParse(identiteSansPresident).success).toBe(false)
   })
+
+  it('should_accept_identite_club_when_programme_sportif_est_declare', () => {
+    const identiteAvecProgramme = {
+      nom: 'Sporting Club Roquettan',
+      president: 'Nicolas Votano',
+      visuel: visuelAccueilConforme,
+      projetClub: { piliers: ['Former des joueurs', 'Faire grandir des personnes', 'Construire une famille'] },
+      lieuClub: { nom: 'Stade Joseph Ferrero', adresse: '1955 avenue de la République, 06550 La Roquette-sur-Siagne' },
+      partenaires: [],
+      programmeSportif: { nom: 'Programme Ünseme', organisme: 'AS Monaco', statut: 'Club satellite' },
+    }
+    const result = IdentiteClubSchema.safeParse(identiteAvecProgramme)
+    expect(result.success).toBe(true)
+    expect(result.data?.programmeSportif?.statut).toBe('Club satellite')
+  })
 })

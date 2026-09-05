@@ -23,6 +23,14 @@ const { Content } = await render(identite)
       </ol>
       <h2>Où nous trouver</h2>
       <p>{leClub.lieuClub.nom}, {leClub.lieuClub.adresse}</p>
+      <h2>Programme sportif</h2>
+      {leClub.programmeSportif && (
+        <div class="programme-sportif">
+          <span class="statut">{leClub.programmeSportif.statut} · {leClub.programmeSportif.organisme}</span>
+          <span class="nom">{leClub.programmeSportif.nom}</span>
+          <p>Pour la saison 2026-2027, le SCR est club satellite au sein du programme Ünseme de l'AS Monaco. Ce lien est purement sportif ; ses modalités détaillées : à compléter par le club.</p>
+        </div>
+      )}
       <h2>Partenaires</h2>
       <ul class="partenaires">
         {leClub.partenaires.map(partenaire => <PartenaireBadge partenaire={partenaire} />)}

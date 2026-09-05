@@ -14,9 +14,11 @@ projetClub:
 lieuClub:
   nom: "Stade Joseph Ferrero"
   adresse: "1955 avenue de la République, 06550 La Roquette-sur-Siagne"
+programmeSportif:
+  nom: "Programme Ünseme"
+  organisme: "AS Monaco"
+  statut: "Club satellite"
 partenaires:
-  - nom: "AS Monaco"
-  - nom: "Ünseme"
   - nom: "Super U Pégomas"
   - nom: "E.Leclerc Cannes"
   - nom: "Construction Giagnoni"
@@ -50,11 +52,9 @@ Au SCR, les valeurs ne restent pas des mots. Un Carnet des Valeurs est remis aux
 
 ## L'encadrement
 
-Le club est présidé par Nicolas Votano, épaulé par Yann Le Caharec, vice-président, dont l'engagement est né d'une envie simple : offrir à son fils, puis à tous les enfants du club, un cadre où s'amuser, progresser et apprendre les valeurs qui comptent. La direction sportive est assurée par Nicolas Longo. Le staff technique réunit des éducateurs bien connus à La Roquette-sur-Siagne et de nouveaux visages venus renforcer le projet ; leur présentation détaillée : à compléter par le club.
+Le club est présidé par Nicolas Votano, épaulé par Yann Le Caharec, vice-président. Leurs parcours et leurs messages sont à lire sur la page [L'équipe](/equipe/). La direction sportive est assurée par Nicolas Longo. Le staff technique réunit des éducateurs bien connus à La Roquette-sur-Siagne et de nouveaux visages venus renforcer le projet ; leur présentation détaillée : à compléter par le club.
 
 ## Nos partenaires
-
-**Partenariat sportif.** Pour la saison 2026-2027, le SCR rejoint le programme Ünseme de l'AS Monaco en tant que club satellite. Ce lien est purement sportif ; ses modalités détaillées : à compléter par le club.
 
 **Partenaires financiers.** Des entreprises du territoire ont choisi de soutenir le projet dès sa première saison : Super U Pégomas, partenaire Platine, ainsi que E.Leclerc Cannes, Construction Giagnoni et SODDY, partenaires officiels. Leur confiance représente énormément pour un club qui écrit les premières pages de son histoire.
 
