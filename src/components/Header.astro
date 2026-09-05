@@ -37,14 +37,32 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   .carte { border: 1px solid var(--accent); border-radius: 0.5rem; overflow: hidden; }
   .carte-corps { padding: 1.25rem; }
   .carte time { color: var(--accent); font-size: 0.9rem; letter-spacing: 0.08em; }
-  .entete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--accent); }
-  .entete .marque { display: flex; align-items: center; gap: 0.75rem; color: var(--texte); text-decoration: none; }
-  .entete .marque img { border-radius: 50%; }
-  .entete .nom { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.95rem; }
+  /* En-tête : bureau = logo à gauche, navigation centrée ; mobile = logo + icône trois barres, menu dépliant. */
+  .entete { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--accent); position: relative; }
+  .entete .marque { display: flex; align-items: center; gap: 0.75rem; color: var(--texte); text-decoration: none; min-width: 0; }
+  .entete .marque img { border-radius: 50%; width: 56px; height: 56px; flex: none; }
+  .entete .nom { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.9rem; line-height: 1.2; }
   .entete .nom strong { color: var(--accent); }
-  .entete nav { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
   .entete nav a { color: var(--texte); text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; }
-  .entete nav a.cta { color: var(--fond); background: var(--accent); padding: 0.5rem 1rem; border-radius: 999px; font-weight: 700; }
+  .entete nav a.cta { color: var(--fond); background: var(--accent); padding: 0.55rem 1rem; border-radius: 999px; font-weight: 700; }
+  .nav-bureau { display: none; }
+  .menu { grid-column: 3; position: relative; }
+  .menu summary { list-style: none; cursor: pointer; display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; color: var(--texte); border: 1px solid var(--accent); border-radius: 999px; user-select: none; }
+  .menu summary::-webkit-details-marker, .menu summary::marker { display: none; content: ""; }
+  .menu .barres { width: 1.25rem; height: 2px; background: currentColor; position: relative; display: block; }
+  .menu .barres::before, .menu .barres::after { content: ""; position: absolute; left: 0; width: 100%; height: 2px; background: currentColor; }
+  .menu .barres::before { top: -7px; }
+  .menu .barres::after { top: 7px; }
+  .menu[open] summary { background: var(--accent); color: var(--fond); }
+  .menu nav { position: absolute; right: 0; top: calc(100% + 0.75rem); min-width: 16rem; background: var(--fond); border: 1px solid var(--accent); border-radius: 0.75rem; padding: 0.75rem; display: grid; gap: 0.25rem; z-index: 10; }
+  .menu nav a { display: block; padding: 0.85rem 1rem; border-radius: 0.5rem; }
+  .menu nav a.cta { text-align: center; margin-top: 0.5rem; }
+  @media (min-width: 900px) {
+    .entete { padding: 1rem 1.25rem; grid-template-columns: 1fr auto 1fr; }
+    .entete .marque img { width: 72px; height: 72px; }
+    .nav-bureau { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; align-items: center; grid-column: 2; }
+    .menu { display: none; }
+  }
   .pied { border-top: 1px solid var(--accent); padding: 1.5rem 1.25rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; }
   .pied a { color: var(--texte); }
   dl.fiche { display: grid; grid-template-columns: 1fr; gap: 0.25rem 1.5rem; }
@@ -81,7 +99,7 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
     <a class="cta" href={CTA.href}>{CTA.libelle}</a>
   </nav>
   <details class="menu">
-    <summary aria-label="Ouvrir le menu"><span class="barres" aria-hidden="true"></span>Menu</summary>
+    <summary aria-label="Ouvrir le menu" title="Menu"><span class="barres" aria-hidden="true"></span></summary>
     <nav aria-label="Navigation principale (mobile)">
       {LIENS.map(lien => <a href={lien.href}>{lien.libelle}</a>)}
       <a class="cta" href={CTA.href}>{CTA.libelle}</a>
