@@ -29,3 +29,25 @@ test.describe('Chargement mobile des 4 pages', () => {
     })
   }
 })
+
+test.describe('Menu mobile 375px', () => {
+  test.use({ viewport: VIEWPORT_MOBILE })
+
+  test('should_open_the_mobile_menu_and_reveal_the_navigation_links', async ({ page }) => {
+    await page.goto('/')
+    const boutonMenu = page.locator('header summary')
+    await expect(boutonMenu).toBeVisible()
+    const lienEquipe = page.locator('header details.menu nav a[href="/equipe"]')
+    await expect(lienEquipe).toBeHidden()
+    await boutonMenu.click()
+    await expect(lienEquipe).toBeVisible()
+    await expect(page.locator('header details.menu nav a[href="/rejoindre"]')).toBeVisible()
+  })
+
+  test('should_not_require_horizontal_scroll_on_rejoindre_page', async ({ page }) => {
+    await page.goto('/rejoindre/')
+    const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth)
+    const clientWidth = await page.evaluate(() => document.documentElement.clientWidth)
+    expect(scrollWidth).toBeLessThanOrEqual(clientWidth)
+  })
+})
