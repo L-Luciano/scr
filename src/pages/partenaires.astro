@@ -28,8 +28,8 @@ const coordonnees = getCoordonnees(coordonneesEntree.data)
       <p>Super U Pégomas est partenaire Platine ; E.Leclerc Cannes, Construction Giagnoni et SODDY sont partenaires officiels. Le partenariat sportif avec l'AS Monaco relève du <a href="/le-club/projet/">programme Ünseme</a>, présenté dans le projet du club.</p>
       <h2>Devenir partenaire</h2>
       <p>Le Sporting Club Roquettan grandit et veut construire cette aventure avec les acteurs de son territoire. Soutenir le SCR, c'est accompagner un projet tourné vers la jeunesse, les valeurs, le sport et la vie locale, et associer votre entreprise à une aventure qui commence. Entreprises, commerçants, artisans : plusieurs formules existent pour accompagner le club à votre niveau.</p>
-      <p>Le détail des formules (visibilité, contreparties, montants) : à compléter par le club. En attendant, un simple message suffit pour en discuter.</p>
-      {coordonnees.email && <p class="actions"><a class="bouton" href={`mailto:${coordonnees.email}?subject=Devenir%20partenaire%20du%20SCR`}>Nous écrire pour devenir partenaire</a><a class="lien-secondaire" href={`mailto:${coordonnees.email}`}>{coordonnees.email}</a></p>}
+      <p>Le détail des formules (visibilité, contreparties, montants) : à compléter par le club. En attendant, un simple message{coordonnees.email && <> à <span class="email">{coordonnees.email}</span></>} suffit pour en discuter.</p>
+      {coordonnees.email && <p class="actions"><a class="bouton" href={`mailto:${coordonnees.email}?subject=Devenir%20partenaire%20du%20SCR`}>Nous écrire pour devenir partenaire</a></p>}
     </main>
     <Footer />
   </body>

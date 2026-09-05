@@ -58,8 +58,10 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     const noms = [...dom.window.document.querySelectorAll('ul.partenaires li')].map(li => li.textContent?.trim())
     expect(noms).toEqual(expect.arrayContaining(['Super U Pégomas', 'E.Leclerc Cannes', 'Construction Giagnoni', 'SODDY']))
     expect(noms).not.toContain('AS Monaco')
-    expect(dom.window.document.querySelector('a[href="mailto:sporting.club.roquettan@gmail.com"]')).not.toBeNull()
-    expect(dom.window.document.querySelector('a.bouton[href^="mailto:"]')?.textContent).toContain('Nous écrire')
+    const liensMail = dom.window.document.querySelectorAll('a[href^="mailto:sporting.club.roquettan@gmail.com"]')
+    expect(liensMail.length).toBe(1)
+    expect(liensMail[0].textContent).toContain('Nous écrire')
+    expect(texteDe(dom)).toContain('sporting.club.roquettan@gmail.com')
     expect(texteDe(dom)).toContain('Devenir partenaire')
   })
 
