@@ -6,6 +6,7 @@ describe('Query Accueil', () => {
   it('should_return_piliers_in_fixed_order_when_given_the_parsed_identite_club_content', () => {
     const identiteClub = {
       nom: 'Sporting Club Roquettan',
+      president: 'Nicolas Votano',
       visuel: {
         asset: 'assets/visuels-generes/accueil.svg',
         couleursUtilisees: ['rose', 'noir-anthracite'],

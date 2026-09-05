@@ -12,6 +12,7 @@ describe('IdentiteClubSchema', () => {
   it('should_accept_identite_club_when_nom_visuel_piliers_ordonnes_et_lieu_sont_presents', () => {
     const identiteClub = {
       nom: 'Sporting Club Roquettan',
+      president: 'Nicolas Votano',
       visuel: visuelAccueilConforme,
       projetClub: { piliers: ['Former des joueurs', 'Faire grandir des personnes', 'Construire une famille'] },
       lieuClub: { nom: 'Stade Joseph Ferrero', adresse: '1955 avenue de la République, 06550 La Roquette-sur-Siagne' },
@@ -27,6 +28,7 @@ describe('IdentiteClubSchema', () => {
   it('should_reject_identite_club_when_visuel_utilise_une_couleur_hors_palette', () => {
     const identiteVisuelBleu = {
       nom: 'Sporting Club Roquettan',
+      president: 'Nicolas Votano',
       visuel: { ...visuelAccueilConforme, couleursUtilisees: ['bleu'] },
       projetClub: { piliers: ['Former des joueurs', 'Faire grandir des personnes', 'Construire une famille'] },
       lieuClub: { nom: 'Stade Joseph Ferrero', adresse: '1955 avenue de la République, 06550 La Roquette-sur-Siagne' },
@@ -39,5 +41,16 @@ describe('IdentiteClubSchema', () => {
         i => i.message === 'Le visuel doit être conforme à la charte graphique (palette Noir/Anthracite, Rose, Blanc ; aucune personne réelle identifiable).',
       ),
     ).toBe(true)
+  })
+
+  it('should_reject_identite_club_when_president_est_absent', () => {
+    const identiteSansPresident = {
+      nom: 'Sporting Club Roquettan',
+      visuel: visuelAccueilConforme,
+      projetClub: { piliers: ['Former des joueurs', 'Faire grandir des personnes', 'Construire une famille'] },
+      lieuClub: { nom: 'Stade Joseph Ferrero', adresse: '1955 avenue de la République, 06550 La Roquette-sur-Siagne' },
+      partenaires: [],
+    }
+    expect(IdentiteClubSchema.safeParse(identiteSansPresident).success).toBe(false)
   })
 })

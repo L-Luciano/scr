@@ -1,0 +1,7 @@
+---
+import { getCollection } from 'astro:content'
+const actualites = await getCollection('actualites')
+---
+<html lang="fr"><head><meta charset="utf-8"><title>Actualités (fixture)</title></head><body>
+<ul>{actualites.map(a => <li>{a.data.titre}</li>)}</ul>
+</body></html>

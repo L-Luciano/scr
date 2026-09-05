@@ -22,6 +22,8 @@ const ProjetClubSchema = z.object({
  */
 export const IdentiteClubSchema = z.object({
   nom: z.literal(NOM_CLUB),
+  /** Président du club (représentant légal, affiché dans les Mentions légales — SC-021). */
+  president: z.string().min(1),
   visuel: VisuelSchema,
   projetClub: ProjetClubSchema,
   lieuClub: LieuClubSchema,
