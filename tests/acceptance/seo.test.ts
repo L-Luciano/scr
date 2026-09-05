@@ -3,12 +3,15 @@ import { JSDOM } from 'jsdom'
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import path from 'node:path'
 
+// Une page de redirection (meta refresh générée par Astro) n'est pas une page servie aux familles.
+const estUneRedirection = (chemin: string) => /http-equiv="refresh"/i.test(readFileSync(chemin, 'utf-8'))
+
 function trouverTousLesIndexHtml(racine: string): string[] {
   const resultats: string[] = []
   for (const entree of readdirSync(racine)) {
     const chemin = path.join(racine, entree)
     if (statSync(chemin).isDirectory()) resultats.push(...trouverTousLesIndexHtml(chemin))
-    else if (entree === 'index.html') resultats.push(chemin)
+    else if (entree === 'index.html' && !estUneRedirection(chemin)) resultats.push(chemin)
   }
   return resultats
 }

@@ -37,7 +37,7 @@ test.describe('Menu mobile 375px', () => {
     await page.goto('/')
     const boutonMenu = page.locator('header summary')
     await expect(boutonMenu).toBeVisible()
-    const lienEquipe = page.locator('header details.menu nav a[href="/equipe"]')
+    const lienEquipe = page.locator('header details.menu nav a[href="/le-club/bureau"]')
     await expect(lienEquipe).toBeHidden()
     await boutonMenu.click()
     await expect(lienEquipe).toBeVisible()

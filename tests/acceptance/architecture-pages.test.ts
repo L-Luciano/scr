@@ -73,6 +73,7 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     const sousLiens = [...dom.window.document.querySelectorAll('header .nav-bureau .sous-menu a')].map(a => a.getAttribute('href'))
     expect(sousLiens).toEqual(['/le-club', '/le-club/projet', '/le-club/valeurs', '/le-club/bureau'])
     const principaux = [...dom.window.document.querySelectorAll('header .nav-bureau > a, header .nav-bureau > .groupe > a')].map(a => a.getAttribute('href'))
-    expect(principaux).toEqual(['/', '/le-club', '/categories', '/actualites', '/partenaires', '/rejoindre'])
+    expect(principaux).toEqual(['/', '/le-club', '/categories', '/actualites', '/partenaires'])
+    expect(dom.window.document.querySelector('header > a.cta[href="/rejoindre"]')).not.toBeNull()
   })
 })

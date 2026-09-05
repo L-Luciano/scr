@@ -7,12 +7,15 @@ import path from 'node:path'
 // Décision utilisateur 2026-09-05 : numéro de téléphone retiré du site en attente d'accord.
 const NUMERO_RETIRE = '06 71 58 95 18'
 
+// Une page de redirection (meta refresh générée par Astro) n'est pas une page servie aux familles.
+const estUneRedirection = (chemin: string) => /http-equiv="refresh"/i.test(readFileSync(chemin, 'utf-8'))
+
 function trouverTousLesIndexHtml(racine: string): string[] {
   const resultats: string[] = []
   for (const entree of readdirSync(racine)) {
     const chemin = path.join(racine, entree)
     if (statSync(chemin).isDirectory()) resultats.push(...trouverTousLesIndexHtml(chemin))
-    else if (entree === 'index.html') resultats.push(chemin)
+    else if (entree === 'index.html' && !estUneRedirection(chemin)) resultats.push(chemin)
   }
   return resultats
 }

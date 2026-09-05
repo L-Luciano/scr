@@ -70,14 +70,15 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   .entete .nom { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.9rem; line-height: 1.2; }
   .entete .nom strong { color: var(--accent); }
   .entete nav a { color: var(--texte); text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; }
-  .entete nav a.cta { color: var(--fond); background: var(--accent); padding: 0.55rem 1rem; border-radius: 999px; font-weight: 700; }
+  .entete a.cta { color: var(--fond); background: var(--accent); padding: 0.55rem 1rem; border-radius: 999px; font-weight: 700; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; white-space: nowrap; }
+  .cta-bureau { display: none; }
   .entete nav a[aria-current="page"]:not(.cta) { color: var(--accent); font-weight: 700; }
   .nav-bureau > a, .groupe > a { position: relative; padding: 0.35rem 0; }
   .nav-bureau > a::after, .groupe > a .libelle::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.2s ease; }
   .groupe > a { padding: 0; }
   .groupe > a .libelle { position: relative; display: inline-block; padding: 0.35rem 0; }
   .nav-bureau > a:hover::after, .nav-bureau > a[aria-current="page"]::after, .groupe:hover > a .libelle::after, .groupe:focus-within > a .libelle::after, .groupe > a[aria-current="page"] .libelle::after { transform: scaleX(1); }
-  .entete nav a.cta[aria-current="page"] { box-shadow: 0 0 0 3px var(--fond), 0 0 0 5px var(--accent); }
+  .entete a.cta[aria-current="page"] { box-shadow: 0 0 0 3px var(--fond), 0 0 0 5px var(--accent); }
   .menu nav a[aria-current="page"]:not(.cta) { border-left: 4px solid var(--accent); box-shadow: none; }
   .nav-bureau { display: none; }
   .menu { grid-column: 3; position: relative; }
@@ -121,6 +122,7 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
     .entete { padding: 1rem 1.25rem; grid-template-columns: 1fr auto 1fr; }
     .entete .marque img { width: 72px; height: 72px; }
     .nav-bureau { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; align-items: center; grid-column: 2; }
+    .cta-bureau { display: inline-block; grid-column: 3; justify-self: end; }
     .menu { display: none; }
   }
   .pied { border-top: 1px solid var(--accent); padding: 1.5rem 1.25rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; }
@@ -168,8 +170,8 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
         <a href={lien.href} aria-current={courant(lien.href)}>{lien.libelle}</a>
       ),
     )}
-    <a class="cta" href={CTA.href} aria-current={courant(CTA.href)}>{CTA.libelle}</a>
   </nav>
+  <a class="cta cta-bureau" href={CTA.href} aria-current={courant(CTA.href)}>{CTA.libelle}</a>
   <details class="menu">
     <summary aria-label="Ouvrir le menu" title="Menu"><span class="barres" aria-hidden="true"></span></summary>
     <nav aria-label="Navigation principale (mobile)">
