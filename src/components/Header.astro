@@ -74,7 +74,8 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   .entete nav a[aria-current="page"]:not(.cta) { color: var(--accent); font-weight: 700; }
   .nav-bureau > a, .groupe > a { position: relative; padding: 0.35rem 0; }
   .nav-bureau > a::after, .groupe > a .libelle::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.2s ease; }
-  .groupe > a .libelle { position: relative; display: inline-block; }
+  .groupe > a { padding: 0; }
+  .groupe > a .libelle { position: relative; display: inline-block; padding: 0.35rem 0; }
   .nav-bureau > a:hover::after, .nav-bureau > a[aria-current="page"]::after, .groupe:hover > a .libelle::after, .groupe:focus-within > a .libelle::after, .groupe > a[aria-current="page"] .libelle::after { transform: scaleX(1); }
   .entete nav a.cta[aria-current="page"] { box-shadow: 0 0 0 3px var(--fond), 0 0 0 5px var(--accent); }
   .menu nav a[aria-current="page"]:not(.cta) { border-left: 4px solid var(--accent); box-shadow: none; }
