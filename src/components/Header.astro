@@ -14,6 +14,11 @@ const LIENS = [
 ]
 const CTA = { href: '/rejoindre', libelle: 'Rejoindre / Contact' }
 
+// Page courante : l'Accueil ne s'active que sur « / », les autres rubriques aussi sur leurs sous-pages (ex. détail d'une actualité).
+const chemin = Astro.url.pathname.replace(/\/+$/, '') || '/'
+const estCourante = (href: string) => (href === '/' ? chemin === '/' : chemin === href || chemin.startsWith(href + '/'))
+const courant = (href: string) => (estCourante(href) ? 'page' : undefined)
+
 // Feuille globale : les seules couleurs viennent de TOKENS_CHARTE, injectées en variables CSS sur :root.
 const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${texte}; }` + `
 
@@ -45,6 +50,9 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   .entete .nom strong { color: var(--accent); }
   .entete nav a { color: var(--texte); text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; }
   .entete nav a.cta { color: var(--fond); background: var(--accent); padding: 0.55rem 1rem; border-radius: 999px; font-weight: 700; }
+  .entete nav a[aria-current="page"]:not(.cta) { color: var(--accent); font-weight: 700; box-shadow: inset 0 -2px 0 var(--accent); }
+  .entete nav a.cta[aria-current="page"] { box-shadow: 0 0 0 3px var(--fond), 0 0 0 5px var(--accent); }
+  .menu nav a[aria-current="page"]:not(.cta) { border-left: 4px solid var(--accent); box-shadow: none; }
   .nav-bureau { display: none; }
   .menu { grid-column: 3; position: relative; }
   .menu summary { list-style: none; cursor: pointer; display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; color: var(--texte); border: 1px solid var(--accent); border-radius: 999px; user-select: none; }
@@ -95,8 +103,8 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
     <span class="nom">Sporting Club <strong>Roquettan</strong></span>
   </a>
   <nav class="nav-bureau" aria-label="Navigation principale">
-    {LIENS.map(lien => <a href={lien.href}>{lien.libelle}</a>)}
-    <a class="cta" href={CTA.href}>{CTA.libelle}</a>
+    {LIENS.map(lien => <a href={lien.href} aria-current={courant(lien.href)}>{lien.libelle}</a>)}
+    <a class="cta" href={CTA.href} aria-current={courant(CTA.href)}>{CTA.libelle}</a>
   </nav>
   <details class="menu">
     <summary aria-label="Ouvrir le menu" title="Menu"><span class="barres" aria-hidden="true"></span></summary>
