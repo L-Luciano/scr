@@ -1,7 +1,7 @@
 ---
 titre: "E.Leclerc Cannes rejoint les partenaires officiels du SCR"
 datePublication: "2026-08-30"
-extrait: "L'enseigne du bassin cannois soutient l'école de football et le projet familial du club pour 2026-2027."
+extrait: "L'enseigne du bassin cannois soutient l'école de football et le projet familial du club."
 visuel:
   asset: "../../assets/visuels-generes/partenaire-eleclerc-cannes.svg"
   couleursUtilisees: ["noir-anthracite", "rose", "blanc"]
