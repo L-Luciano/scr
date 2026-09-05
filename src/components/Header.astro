@@ -1,0 +1,61 @@
+---
+import { CHEMIN_LOGO, TOKENS_CHARTE } from '../domain/brand-system/charte-graphique'
+import { NOM_CLUB } from '../domain/club-presentation/identite-club.schema'
+const fond = TOKENS_CHARTE['noir-anthracite']
+const accent = TOKENS_CHARTE.rose
+const texte = TOKENS_CHARTE.blanc
+
+// Feuille globale : les seules couleurs viennent de TOKENS_CHARTE, injectées en variables CSS sur :root.
+const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${texte}; }` + `
+
+  /* Charte : les seules couleurs proviennent de TOKENS_CHARTE (charte-graphique.ts). */
+  * { box-sizing: border-box; }
+  html { background: var(--fond); color: var(--texte); font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; }
+  body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
+  main { flex: 1; width: 100%; max-width: 64rem; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+  h1, h2, h3 { text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.15; }
+  h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 1rem; }
+  h1 em, .accent { color: var(--accent); font-style: normal; }
+  a { color: var(--accent); }
+  img { max-width: 100%; height: auto; display: block; }
+  .visuel { border: 2px solid var(--accent); border-radius: 0.5rem; margin: 1.5rem 0; }
+  .liseret { width: 12rem; height: 0.5rem; background: var(--accent); margin: 1rem 0 2rem; }
+  .piliers { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); padding: 0; margin: 0; list-style: none; counter-reset: pilier; }
+  .piliers li { border: 1px solid var(--accent); border-radius: 0.5rem; padding: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .piliers li::before { counter-increment: pilier; content: counter(pilier, decimal-leading-zero); display: block; color: var(--accent); font-size: 0.85rem; margin-bottom: 0.5rem; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--fond); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; padding: 0.9rem 1.5rem; border-radius: 999px; }
+  .cartes { display: grid; gap: 1.5rem; padding: 0; margin: 0; list-style: none; }
+  .carte { border: 1px solid var(--accent); border-radius: 0.5rem; overflow: hidden; }
+  .carte-corps { padding: 1.25rem; }
+  .carte time { color: var(--accent); font-size: 0.9rem; letter-spacing: 0.08em; }
+  .entete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--accent); }
+  .entete .marque { display: flex; align-items: center; gap: 0.75rem; color: var(--texte); text-decoration: none; }
+  .entete .marque img { border-radius: 50%; }
+  .entete .nom { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.95rem; }
+  .entete .nom strong { color: var(--accent); }
+  .entete nav { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .entete nav a { color: var(--texte); text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; }
+  .entete nav a.cta { color: var(--fond); background: var(--accent); padding: 0.5rem 1rem; border-radius: 999px; font-weight: 700; }
+  .pied { border-top: 1px solid var(--accent); padding: 1.5rem 1.25rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; }
+  .pied a { color: var(--texte); }
+  dl.fiche { display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.5rem; }
+  dl.fiche dt { color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; }
+  dl.fiche dd { margin: 0; }
+  .partenaires { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0; list-style: none; }
+  .partenaires li { border: 1px solid var(--accent); border-radius: 999px; padding: 0.4rem 1rem; }
+`
+---
+<header class="entete">
+  <a class="marque" href="/">
+    <img src={CHEMIN_LOGO} alt={`Logo du ${NOM_CLUB}`} width="72" height="72" />
+    <span class="nom">Sporting Club <strong>Roquettan</strong></span>
+  </a>
+  <nav aria-label="Navigation principale">
+    <a href="/">Accueil</a>
+    <a href="/le-club">Le club</a>
+    <a href="/actualites">Actualités</a>
+    <a class="cta" href="/rejoindre">Rejoindre / Contact</a>
+  </nav>
+</header>
+
+<style is:global set:html={styleGlobal}></style>

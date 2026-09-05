@@ -1,0 +1,32 @@
+---
+import { getEntry } from 'astro:content'
+import Seo from '../components/Seo.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import BoutonAppel from '../components/BoutonAppel.astro'
+import { getCoordonnees } from '../application/get-coordonnees.query'
+
+const entree = await getEntry('coordonnees', 'coordonnees')
+if (!entree) throw new Error('Contenu coordonnees.md introuvable.')
+const coordonnees = getCoordonnees(entree.data)
+const instagramUrl = `https://www.instagram.com/${coordonnees.instagram.slice(1)}/`
+---
+<html lang="fr">
+  <head><Seo meta={coordonnees.meta} /></head>
+  <body>
+    <Header />
+    <main>
+      <h1>Rejoindre / <em>Contact</em></h1>
+      <div class="liseret"></div>
+      <p>Envie de jouer au Sporting Club Roquettan ? Le plus simple est de nous appeler : nous répondons à toutes vos questions sur les inscriptions.</p>
+      <BoutonAppel lienAppel={coordonnees.lienAppel} telephone={coordonnees.telephone} />
+      <h2>Nos coordonnées</h2>
+      <dl class="fiche">
+        <dt>Téléphone</dt><dd>{coordonnees.telephone}</dd>
+        <dt>Instagram</dt><dd><a href={instagramUrl}>{coordonnees.instagram}</a></dd>
+        <dt>Adresse</dt><dd>{coordonnees.lieu.nom}, {coordonnees.lieu.adresse}</dd>
+      </dl>
+    </main>
+    <Footer />
+  </body>
+</html>

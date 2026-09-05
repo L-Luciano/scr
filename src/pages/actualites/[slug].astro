@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content'
+import Seo from '../../components/Seo.astro'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import { getActualites } from '../../application/get-actualites.query'
+
+export async function getStaticPaths() {
+  const entrees = await getCollection('actualites')
+  return entrees.map(entree => ({ params: { slug: entree.id }, props: { entree } }))
+}
+const { entree } = Astro.props
+const [actualite] = getActualites([entree.data])
+const { Content } = await render(entree)
+const visuels = import.meta.glob<string>('/src/assets/visuels-generes/*.svg', { eager: true, query: '?url', import: 'default' })
+const urlVisuel = visuels[`/src/assets/visuels-generes/${actualite.visuel.asset.split('/').pop()}`]
+---
+<html lang="fr">
+  <head><Seo meta={actualite.meta} /></head>
+  <body>
+    <Header />
+    <main>
+      <p><a href="/actualites/">← Toutes les actualités</a></p>
+      <time class="accent" datetime={actualite.datePublication}>{actualite.datePublication}</time>
+      <h1>{actualite.titre}</h1>
+      <div class="liseret"></div>
+      <img class="visuel" src={urlVisuel} alt={actualite.visuel.alt} width="1200" height="630" />
+      <Content />
+    </main>
+    <Footer />
+  </body>
+</html>

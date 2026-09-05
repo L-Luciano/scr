@@ -1,7 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
-const actualites = await getCollection('actualites')
+// Rend la page réelle du site sur la collection (vide) de cette fixture — SC-008.
+import PageActualites from '../../../../../../../src/pages/actualites/index.astro'
 ---
-<html lang="fr"><head><meta charset="utf-8"><title>Actualités (fixture)</title></head><body>
-<ul>{actualites.map(a => <li>{a.data.titre}</li>)}</ul>
-</body></html>
+<PageActualites />

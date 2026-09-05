@@ -1,0 +1,6 @@
+---
+// Rendu seul (TDA) : le lien d'appel est déjà calculé par la Query via pourLienAppel().
+interface Props { lienAppel: string; telephone: string }
+const { lienAppel, telephone } = Astro.props
+---
+<a class="bouton" href={lienAppel}>Appeler le club · {telephone}</a>

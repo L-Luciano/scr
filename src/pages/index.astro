@@ -1,0 +1,41 @@
+---
+import { getEntry } from 'astro:content'
+import Seo from '../components/Seo.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import BoutonAppel from '../components/BoutonAppel.astro'
+import { getAccueil } from '../application/get-accueil.query'
+import { getCoordonnees } from '../application/get-coordonnees.query'
+
+const identite = await getEntry('identiteClub', 'identite-club')
+const coordonneesEntree = await getEntry('coordonnees', 'coordonnees')
+if (!identite || !coordonneesEntree) throw new Error('Contenu identite-club.md ou coordonnees.md introuvable.')
+const accueil = getAccueil(identite.data)
+const coordonnees = getCoordonnees(coordonneesEntree.data)
+
+// Visuel : fichier de src/assets servi par le pipeline Astro (URL hachée), résolu depuis le chemin du front-matter.
+const visuels = import.meta.glob<string>('/src/assets/visuels-generes/*.svg', { eager: true, query: '?url', import: 'default' })
+const urlVisuel = visuels[`/src/assets/visuels-generes/${accueil.visuel.asset.split('/').pop()}`]
+---
+<html lang="fr">
+  <head><Seo meta={accueil.meta} /></head>
+  <body>
+    <Header />
+    <main>
+      <p class="accent">Saison 2026 / 2027 · Stade Joseph Ferrero</p>
+      <h1>Sporting Club <em>Roquettan</em></h1>
+      <div class="liseret"></div>
+      <p>Le club de football de La Roquette-sur-Siagne, fondé en 2026. Plus de cent licenciés dès la première rentrée, et une même envie : jouer, progresser et grandir ensemble.</p>
+      <img class="visuel" src={urlVisuel} alt={accueil.visuel.alt} width="1200" height="630" />
+      <h2>Notre projet</h2>
+      <ol class="piliers">
+        {accueil.projetClub.piliers.map(pilier => <li>{pilier}</li>)}
+      </ol>
+      <p style="margin-top:2rem"><a class="bouton" href={accueil.lienRejoindre}>Rejoindre le club</a></p>
+      <h2>Nous contacter</h2>
+      <p>{coordonnees.lieu.nom}, {coordonnees.lieu.adresse}</p>
+      <BoutonAppel lienAppel={coordonnees.lienAppel} telephone={coordonnees.telephone} />
+    </main>
+    <Footer />
+  </body>
+</html>

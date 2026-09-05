@@ -1,0 +1,16 @@
+---
+import type { ActualiteAvecMeta } from '../application/get-actualites.query'
+interface Props { actualite: ActualiteAvecMeta; slug: string; urlVisuel: string }
+const { actualite, slug, urlVisuel } = Astro.props
+---
+<li class="carte">
+  <a href={`/actualites/${slug}/`}>
+    <img src={urlVisuel} alt={actualite.visuel.alt} width="1200" height="630" />
+  </a>
+  <div class="carte-corps">
+    <time datetime={actualite.datePublication}>{actualite.datePublication}</time>
+    <h2><a href={`/actualites/${slug}/`}>{actualite.titre}</a></h2>
+    <p>{actualite.extrait}</p>
+    <a href={`/actualites/${slug}/`}>Lire l'actualité</a>
+  </div>
+</li>

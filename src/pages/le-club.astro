@@ -1,0 +1,34 @@
+---
+import { getEntry, render } from 'astro:content'
+import Seo from '../components/Seo.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import PartenaireBadge from '../components/PartenaireBadge.astro'
+import { getLeClub } from '../application/get-le-club.query'
+
+const identite = await getEntry('identiteClub', 'identite-club')
+if (!identite) throw new Error('Contenu identite-club.md introuvable.')
+const leClub = getLeClub(identite.data)
+const { Content } = await render(identite)
+---
+<html lang="fr">
+  <head><Seo meta={leClub.meta} /></head>
+  <body>
+    <Header />
+    <main>
+      <h1>Le <em>club</em></h1>
+      <div class="liseret"></div>
+      <ol class="piliers">
+        {leClub.projetClub.piliers.map(pilier => <li>{pilier}</li>)}
+      </ol>
+      <h2>Où nous trouver</h2>
+      <p>{leClub.lieuClub.nom}, {leClub.lieuClub.adresse}</p>
+      <h2>Partenaires</h2>
+      <ul class="partenaires">
+        {leClub.partenaires.map(partenaire => <PartenaireBadge partenaire={partenaire} />)}
+      </ul>
+      <Content />
+    </main>
+    <Footer />
+  </body>
+</html>

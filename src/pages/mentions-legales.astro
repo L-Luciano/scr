@@ -1,0 +1,43 @@
+---
+import { getEntry } from 'astro:content'
+import Seo from '../components/Seo.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { getMentionsLegales } from '../application/get-mentions-legales.query'
+
+const mentions = await getEntry('mentionsLegales', 'mentions-legales')
+const identite = await getEntry('identiteClub', 'identite-club')
+const coordonnees = await getEntry('coordonnees', 'coordonnees')
+if (!mentions || !identite || !coordonnees) throw new Error('Contenu des mentions légales, de l’identité ou des coordonnées introuvable.')
+const ml = getMentionsLegales(
+  mentions.data,
+  { nom: identite.data.nom, president: identite.data.president },
+  { adresse: coordonnees.data.lieu.adresse, telephone: coordonnees.data.telephone },
+)
+---
+<html lang="fr">
+  <head><Seo meta={ml.meta} /></head>
+  <body>
+    <Header />
+    <main>
+      <h1>Mentions <em>légales</em></h1>
+      <div class="liseret"></div>
+      <h2>Éditeur du site</h2>
+      <dl class="fiche">
+        <dt>Éditeur</dt><dd>{ml.editeur}, association sportive</dd>
+        <dt>Président</dt><dd>{ml.president}</dd>
+        <dt>Adresse</dt><dd>{ml.adresse}</dd>
+        <dt>Téléphone</dt><dd>{ml.telephone}</dd>
+        <dt>E-mail</dt><dd>{ml.email}</dd>
+        <dt>Numéro RNA</dt><dd>{ml.numeroRna}</dd>
+        <dt>SIRET</dt><dd>{ml.siret}</dd>
+        <dt>Directeur de la publication</dt><dd>{ml.directeurPublication}</dd>
+      </dl>
+      <h2>Hébergeur</h2>
+      <p>{ml.hebergeur}</p>
+      <h2>Données personnelles</h2>
+      <p>Ce site ne collecte aucune donnée personnelle et n'utilise aucun cookie.</p>
+    </main>
+    <Footer />
+  </body>
+</html>

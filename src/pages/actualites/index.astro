@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content'
+import Seo from '../../components/Seo.astro'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import ActualiteCard from '../../components/ActualiteCard.astro'
+import { getActualites, getMetaListeActualites } from '../../application/get-actualites.query'
+
+const entrees = await getCollection('actualites')
+const slugParTitre = new Map(entrees.map(e => [e.data.titre, e.id]))
+const actualites = getActualites(entrees.map(e => e.data))
+const visuels = import.meta.glob<string>('/src/assets/visuels-generes/*.svg', { eager: true, query: '?url', import: 'default' })
+const urlVisuel = (asset: string) => visuels[`/src/assets/visuels-generes/${asset.split('/').pop()}`]
+---
+<html lang="fr">
+  <head><Seo meta={getMetaListeActualites()} /></head>
+  <body>
+    <Header />
+    <main>
+      <h1>Actu<em>alités</em></h1>
+      <div class="liseret"></div>
+      {actualites.length === 0
+        ? <p>Aucune actualité n'est disponible pour le moment.</p>
+        : <ul class="cartes">
+            {actualites.map(actualite => (
+              <ActualiteCard actualite={actualite} slug={slugParTitre.get(actualite.titre)!} urlVisuel={urlVisuel(actualite.visuel.asset)} />
+            ))}
+          </ul>}
+    </main>
+    <Footer />
+  </body>
+</html>

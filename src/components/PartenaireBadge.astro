@@ -1,0 +1,11 @@
+---
+import type { Partenaire } from '../domain/club-presentation/partenaire.schema'
+import { affichageLogo } from '../domain/club-presentation/partenaire.schema'
+interface Props { partenaire: Partenaire }
+const { partenaire } = Astro.props
+const logo = affichageLogo(partenaire)
+---
+<li>
+  {logo ? <img src={logo} alt={`Logo de ${partenaire.nom}`} width="48" height="48" /> : null}
+  <span>{partenaire.nom}</span>
+</li>
