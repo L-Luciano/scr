@@ -13,6 +13,7 @@ export interface EditeurSource {
 export interface CoordonneesSource {
   adresse: string
   telephone?: string
+  email?: string
 }
 
 export interface GetMentionsLegalesResult {
@@ -46,10 +47,10 @@ export function getMentionsLegales(
     numeroRna: afficherOuACompleter(mentionsLegales.numeroRna),
     siret: afficherOuACompleter(mentionsLegales.siret),
     directeurPublication: afficherOuACompleter(mentionsLegales.directeurPublication),
-    email: afficherOuACompleter(mentionsLegales.email),
+    email: afficherOuACompleter(mentionsLegales.email ?? coordonnees.email),
     meta: MetaPageSchema.parse({
       titre: `Mentions légales — ${NOM_CLUB}, ${COMMUNE}`,
-      description: `Mentions légales du site du ${NOM_CLUB}, ${COMMUNE} : éditeur et hébergeur.`,
+      description: `Mentions légales du site du ${NOM_CLUB}, club de football de ${COMMUNE} : éditeur, responsable de publication et hébergeur.`,
     }),
   }
 }

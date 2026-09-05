@@ -20,7 +20,7 @@ export function getCoordonnees(coordonnees: Coordonnees): GetCoordonneesResult {
     lienAppel: coordonnees.telephone ? pourLienAppel(coordonnees.telephone) : undefined,
     meta: MetaPageSchema.parse({
       titre: `Rejoindre / Contact — ${NOM_CLUB}, ${COMMUNE}`,
-      description: `Contacter le ${NOM_CLUB} à ${COMMUNE} : Instagram et adresse du Stade Joseph Ferrero.`,
+      description: `Rejoindre le ${NOM_CLUB} à ${COMMUNE} : Instagram, e-mail, adresse du Stade Joseph Ferrero et premières étapes pour s'inscrire.`,
     }),
   }
 }

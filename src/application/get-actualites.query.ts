@@ -27,5 +27,5 @@ export function getActualites(actualites: Actualite[]): ActualiteAvecMeta[] {
 export const getMetaListeActualites = (): MetaPage =>
   MetaPageSchema.parse({
     titre: `Actualités — ${NOM_CLUB}, ${COMMUNE}`,
-    description: `Les actualités du ${NOM_CLUB}, club de football de ${COMMUNE} : vie du club, rentrée, événements.`,
+    description: `Toutes les actualités du ${NOM_CLUB}, club de football de ${COMMUNE} : vie du club, rentrée, partenaires et rendez-vous à venir.`,
   })

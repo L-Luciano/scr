@@ -18,13 +18,20 @@ const instagramUrl = `https://www.instagram.com/${coordonnees.instagram.slice(1)
     <main>
       <h1>Rejoindre / <em>Contact</em></h1>
       <div class="liseret"></div>
-      <p>Envie de jouer au Sporting Club Roquettan ? Écrivez-nous sur Instagram ou venez nous voir au stade : nous répondons à toutes vos questions sur les inscriptions.</p>
-      <p><a class="bouton" href={instagramUrl}>Nous écrire sur Instagram</a></p>
+      <p>Vous souhaitez inscrire votre enfant, reprendre le football ou simplement voir à quoi ressemble le club ? Le Sporting Club Roquettan répond à toutes les questions, sans engagement : le plus simple est de nous écrire ou de venir nous rencontrer au Stade Joseph Ferrero.</p>
+      <p class="actions"><a class="bouton" href={instagramUrl}>Nous écrire sur Instagram</a>{coordonnees.email && <a class="lien-secondaire" href={`mailto:${coordonnees.email}`}>Envoyer un e-mail</a>}</p>
+      <h2>Comment nous rejoindre</h2>
+      <ol class="etapes">
+        <li>Écrivez-nous sur Instagram, à {coordonnees.instagram} : c'est le canal le plus rapide pour poser vos questions sur les inscriptions.</li>
+        <li>Venez nous rencontrer au {coordonnees.lieu.nom}, {coordonnees.lieu.adresse} : rien ne remplace une visite sur place.</li>
+        <li>Le club accueille les joueuses et les joueurs de U6 à U17, et les enfants nés en 2022 et 2023 au baby-foot le samedi de 11 h à 12 h. Horaires détaillés, documents à fournir et tarifs : à compléter par le club. Nous vous indiquons la marche à suivre dès votre premier message.</li>
+      </ol>
       {coordonnees.lienAppel && coordonnees.telephone && <BoutonAppel lienAppel={coordonnees.lienAppel} telephone={coordonnees.telephone} />}
       <h2>Nos coordonnées</h2>
       <dl class="fiche">
         {coordonnees.telephone && <><dt>Téléphone</dt><dd>{coordonnees.telephone}</dd></>}
         <dt>Instagram</dt><dd><a href={instagramUrl}>{coordonnees.instagram}</a></dd>
+        {coordonnees.email && <><dt>E-mail</dt><dd><a href={`mailto:${coordonnees.email}`}>{coordonnees.email}</a></dd></>}
         <dt>Adresse</dt><dd>{coordonnees.lieu.nom}, {coordonnees.lieu.adresse}</dd>
       </dl>
     </main>

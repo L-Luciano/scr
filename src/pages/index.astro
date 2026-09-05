@@ -14,6 +14,13 @@ const accueil = getAccueil(identite.data)
 const coordonnees = getCoordonnees(coordonneesEntree.data)
 const instagramUrl = `https://www.instagram.com/${coordonnees.instagram.slice(1)}/`
 
+// Accroches éditoriales des trois piliers (ordre = ordre fixe des piliers du ProjetClub).
+const ACCROCHES_PILIERS = [
+  'Des séances construites avec exigence et patience, pour que chacun progresse à son rythme, quel que soit son niveau de départ.',
+  "Le respect, l'effort et le goût du collectif s'apprennent aussi sur un terrain : c'est ce que nous transmettons chaque semaine.",
+  'Joueuses, joueurs, parents, éducateurs, bénévoles et dirigeants : au SCR, chacun a sa place et compte pour les autres.',
+]
+
 // Visuel : fichier de src/assets servi par le pipeline Astro (URL hachée), résolu depuis le chemin du front-matter.
 const visuels = import.meta.glob<string>('/src/assets/visuels-generes/*.svg', { eager: true, query: '?url', import: 'default' })
 const urlVisuel = visuels[`/src/assets/visuels-generes/${accueil.visuel.asset.split('/').pop()}`]
@@ -23,19 +30,21 @@ const urlVisuel = visuels[`/src/assets/visuels-generes/${accueil.visuel.asset.sp
   <body>
     <Header />
     <main>
-      <p class="accent">Saison 2026 / 2027 · Stade Joseph Ferrero</p>
+      <p class="accent">Saison 2026-2027 · Stade Joseph Ferrero</p>
       <h1>Sporting Club <em>Roquettan</em></h1>
       <div class="liseret"></div>
-      <p>Le club de football de La Roquette-sur-Siagne, fondé en 2026. Plus de cent licenciés dès la première rentrée, et une même envie : jouer, progresser et grandir ensemble.</p>
+      <p class="accroche">Un club neuf à La Roquette-sur-Siagne, et déjà plus de cent joueuses et joueurs à la maison.</p>
+      <p>Le Sporting Club Roquettan a vu le jour en 2026, au Stade Joseph Ferrero. Dès le premier jour de la rentrée, plus de cent joueuses et joueurs ont choisi ses couleurs, et autant de familles lui ont fait confiance. La saison 2026-2027 s'écrit maintenant, ensemble.</p>
       <img class="visuel" src={urlVisuel} alt={accueil.visuel.alt} width="1200" height="630" />
       <h2>Notre projet</h2>
       <ol class="piliers">
-        {accueil.projetClub.piliers.map(pilier => <li>{pilier}</li>)}
+        {accueil.projetClub.piliers.map((pilier, i) => <li>{pilier}<span class="pilier-accroche">{ACCROCHES_PILIERS[i]}</span></li>)}
       </ol>
-      <p style="margin-top:2rem"><a class="bouton" href={accueil.lienRejoindre}>Rejoindre le club</a></p>
-      <h2>Nous contacter</h2>
-      <p>{coordonnees.lieu.nom}, {coordonnees.lieu.adresse}</p>
-      <p>Écrivez-nous sur Instagram : <a href={instagramUrl}>{coordonnees.instagram}</a></p>
+      <p class="mentalite">Un club humain, sans limite dans l'ambition : le SCR veut construire un club de football avec la mentalité et les valeurs du rugby. Son entrée dans le programme Ünseme de l'AS Monaco, comme club satellite, marque sa première saison.</p>
+      <p class="actions"><a class="bouton" href={accueil.lienRejoindre}>Rejoindre le club</a> <a class="lien-secondaire" href="/le-club">Découvrir le projet</a></p>
+      <h2>Nous trouver, nous écrire</h2>
+      <p>Le club vit au {coordonnees.lieu.nom}, {coordonnees.lieu.adresse}. Venez nous voir au stade un soir d'entraînement, ou écrivez-nous : nous répondons à toutes vos questions.</p>
+      <p>Instagram : <a href={instagramUrl}>{coordonnees.instagram}</a>{coordonnees.email && <> · E-mail : <a href={`mailto:${coordonnees.email}`}>{coordonnees.email}</a></>}</p>
       {coordonnees.lienAppel && coordonnees.telephone && <BoutonAppel lienAppel={coordonnees.lienAppel} telephone={coordonnees.telephone} />}
     </main>
     <Footer />

@@ -25,4 +25,13 @@ describe('Query Mentions légales', () => {
     )
     expect(result.telephone).toBe('à compléter par le club')
   })
+
+  it('should_use_the_club_email_from_coordonnees_when_present', () => {
+    const result = getMentionsLegales(
+      { editeur: 'Sporting Club Roquettan', hebergeur: 'Vercel Inc.' },
+      { nom: 'Sporting Club Roquettan', president: 'Nicolas Votano' },
+      { adresse: '1955 avenue de la République, 06550 La Roquette-sur-Siagne', email: 'sporting.club.roquettan@gmail.com' },
+    )
+    expect(result.email).toBe('sporting.club.roquettan@gmail.com')
+  })
 })

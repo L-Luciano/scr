@@ -19,7 +19,7 @@ describe('Page Actualités (dist/actualites/index.html)', () => {
     const texte = liste.window.document.body.textContent ?? ''
     expect(texte).toContain('Premier objectif dépassé : plus de 100 inscrits')
     expect(texte).toContain('2026-09-03')
-    expect(texte).toContain('Le club franchit le cap symbolique de 100 licenciés.')
+    expect(texte).toContain('Le premier jour de la rentrée a suffi : le SCR a passé la barre des cent licenciés.')
     expect(liste.window.document.querySelector('a[href*="/actualites/2026-09-03-100-inscrits"]')).not.toBeNull()
   })
 

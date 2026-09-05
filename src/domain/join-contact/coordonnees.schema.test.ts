@@ -35,4 +35,22 @@ describe('NumeroTelephoneSchema', () => {
     }
     expect(CoordonneesSchema.safeParse(coordonneesSansTelephone).success).toBe(true)
   })
+
+  it('should_accept_coordonnees_when_email_du_club_est_present', () => {
+    const coordonneesAvecEmail = {
+      instagram: '@sporting.club.roquettan',
+      email: 'sporting.club.roquettan@gmail.com',
+      lieu: { nom: 'Stade Joseph Ferrero', adresse: '1955 avenue de la République, 06550 La Roquette-sur-Siagne' },
+    }
+    expect(CoordonneesSchema.safeParse(coordonneesAvecEmail).success).toBe(true)
+  })
+
+  it('should_reject_coordonnees_when_email_est_invalide', () => {
+    const coordonneesEmailInvalide = {
+      instagram: '@sporting.club.roquettan',
+      email: 'pas-un-email',
+      lieu: { nom: 'Stade Joseph Ferrero', adresse: '1955 avenue de la République, 06550 La Roquette-sur-Siagne' },
+    }
+    expect(CoordonneesSchema.safeParse(coordonneesEmailInvalide).success).toBe(false)
+  })
 })

@@ -18,6 +18,8 @@ export const CoordonneesSchema = z.object({
   /** Optionnel : retiré du site en attente de l'accord du club (décision 2026-09-05). */
   telephone: NumeroTelephoneSchema.optional(),
   instagram: IdentifiantInstagramSchema,
+  /** Adresse publiée par le club lui-même (partenariats) ; optionnelle. */
+  email: z.email().optional(),
   lieu: LieuClubSchema,
 })
 

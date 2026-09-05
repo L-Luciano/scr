@@ -32,6 +32,11 @@ describe('Page Rejoindre / Contact (dist/rejoindre/index.html)', () => {
     expect(dom.window.document.querySelector('a[href^="tel:"]')).toBeNull()
   })
 
+  it('should_offer_the_club_email_as_a_mailto_link', () => {
+    const lien = dom.window.document.querySelector('a[href="mailto:sporting.club.roquettan@gmail.com"]')
+    expect(lien).not.toBeNull()
+  })
+
   it('should_link_instagram_to_the_official_account', () => {
     const lien = dom.window.document.querySelector('a[href*="instagram.com/sporting.club.roquettan"]')
     expect(lien).not.toBeNull()
