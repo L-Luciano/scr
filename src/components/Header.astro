@@ -109,8 +109,8 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   <details class="menu">
     <summary aria-label="Ouvrir le menu" title="Menu"><span class="barres" aria-hidden="true"></span></summary>
     <nav aria-label="Navigation principale (mobile)">
-      {LIENS.map(lien => <a href={lien.href}>{lien.libelle}</a>)}
-      <a class="cta" href={CTA.href}>{CTA.libelle}</a>
+      {LIENS.map(lien => <a href={lien.href} aria-current={courant(lien.href)}>{lien.libelle}</a>)}
+      <a class="cta" href={CTA.href} aria-current={courant(CTA.href)}>{CTA.libelle}</a>
     </nav>
   </details>
 </header>
