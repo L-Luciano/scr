@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro'
 import BoutonAppel from '../components/BoutonAppel.astro'
 import { getAccueil } from '../application/get-accueil.query'
 import { getCoordonnees } from '../application/get-coordonnees.query'
+import { lienCarte } from '../domain/club-presentation/identite-club.schema'
 
 const identite = await getEntry('identiteClub', 'identite-club')
 const coordonneesEntree = await getEntry('coordonnees', 'coordonnees')
@@ -43,7 +44,7 @@ const urlVisuel = visuels[`/src/assets/visuels-generes/${accueil.visuel.asset.sp
       <p class="mentalite">Un club humain, sans limite dans l'ambition : le SCR veut construire un club de football avec la mentalité et les valeurs du rugby. Son entrée dans le programme Ünseme de l'AS Monaco, comme club satellite, marque sa première saison.</p>
       <p class="actions"><a class="bouton" href={accueil.lienRejoindre}>Rejoindre le club</a> <a class="lien-secondaire" href="/le-club">Découvrir le projet</a></p>
       <h2>Nous trouver, nous écrire</h2>
-      <p>Le club vit au {coordonnees.lieu.nom}, {coordonnees.lieu.adresse}. Venez nous voir au stade un soir d'entraînement, ou écrivez-nous : nous répondons à toutes vos questions.</p>
+      <p>Le club vit au {coordonnees.lieu.nom}, {coordonnees.lieu.adresse} (<a href={lienCarte(coordonnees.lieu)} rel="noopener">itinéraire</a>). Venez nous voir au stade un soir d'entraînement, ou écrivez-nous : nous répondons à toutes vos questions.</p>
       <p>Instagram : <a href={instagramUrl}>{coordonnees.instagram}</a>{coordonnees.email && <> · E-mail : <a href={`mailto:${coordonnees.email}`}>{coordonnees.email}</a></>}</p>
       {coordonnees.lienAppel && coordonnees.telephone && <BoutonAppel lienAppel={coordonnees.lienAppel} telephone={coordonnees.telephone} />}
     </main>

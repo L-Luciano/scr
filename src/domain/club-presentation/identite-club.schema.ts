@@ -11,6 +11,10 @@ export const LieuClubSchema = z.object({
   adresse: z.string().min(1),
 })
 
+/** TDA : le lieu sait produire son propre lien d'itinéraire (recherche Google Maps, sans clé ni script). */
+export const lienCarte = (lieu: { nom: string; adresse: string }): string =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${lieu.nom}, ${lieu.adresse}`)}`
+
 /** Programme sportif auquel le club est rattaché (distinct des partenaires financiers). */
 export const ProgrammeSportifSchema = z.object({
   nom: z.string().min(1),

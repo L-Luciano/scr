@@ -69,3 +69,13 @@ describe('IdentiteClubSchema', () => {
     expect(result.data?.programmeSportif?.statut).toBe('Club satellite')
   })
 })
+
+describe('lienCarte — itinéraire vers le stade', () => {
+  it('should_build_a_google_maps_search_url_from_the_lieu_when_asked', async () => {
+    const { lienCarte } = await import('./identite-club.schema')
+    const lieu = { nom: 'Stade Joseph Ferrero', adresse: '1955 avenue de la République, 06550 La Roquette-sur-Siagne' }
+    const url = lienCarte(lieu)
+    expect(url.startsWith('https://www.google.com/maps/search/?api=1&query=')).toBe(true)
+    expect(decodeURIComponent(url)).toContain('Stade Joseph Ferrero, 1955 avenue de la République, 06550 La Roquette-sur-Siagne')
+  })
+})

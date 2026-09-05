@@ -5,6 +5,7 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import PartenaireBadge from '../components/PartenaireBadge.astro'
 import { getLeClub } from '../application/get-le-club.query'
+import { lienCarte } from '../domain/club-presentation/identite-club.schema'
 
 const identite = await getEntry('identiteClub', 'identite-club')
 if (!identite) throw new Error('Contenu identite-club.md introuvable.')
@@ -22,7 +23,7 @@ const { Content } = await render(identite)
         {leClub.projetClub.piliers.map(pilier => <li>{pilier}</li>)}
       </ol>
       <h2>Où nous trouver</h2>
-      <p>{leClub.lieuClub.nom}, {leClub.lieuClub.adresse}</p>
+      <p>{leClub.lieuClub.nom}, {leClub.lieuClub.adresse} · <a href={lienCarte(leClub.lieuClub)} rel="noopener">Voir sur la carte</a></p>
       <h2>Programme sportif</h2>
       {leClub.programmeSportif && (
         <div class="programme-sportif">

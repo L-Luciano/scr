@@ -37,6 +37,12 @@ describe('Page Rejoindre / Contact (dist/rejoindre/index.html)', () => {
     expect(lien).not.toBeNull()
   })
 
+  it('should_offer_a_maps_link_to_the_stade_address', () => {
+    const lien = dom.window.document.querySelector('a[href^="https://www.google.com/maps/search/?api=1&query="]')
+    expect(lien).not.toBeNull()
+    expect(decodeURIComponent(lien?.getAttribute('href') ?? '')).toContain('1955 avenue de la République')
+  })
+
   it('should_link_instagram_to_the_official_account', () => {
     const lien = dom.window.document.querySelector('a[href*="instagram.com/sporting.club.roquettan"]')
     expect(lien).not.toBeNull()
