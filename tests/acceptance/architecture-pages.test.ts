@@ -22,22 +22,35 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(dom.window.document.querySelector('.programme-sportif')?.textContent).toContain('Programme Ünseme')
   })
 
-  it('should_present_seven_value_cards_three_revealed_and_four_a_venir', async () => {
+  it('should_present_seven_value_cards_four_revealed_and_three_a_venir', async () => {
     const dom = await lire('dist/le-club/valeurs/index.html')
     const cartes = [...dom.window.document.querySelectorAll('.valeur')]
     expect(cartes.length).toBe(7)
-    expect(cartes.filter(c => c.classList.contains('revelee')).length).toBe(3)
-    expect(cartes.filter(c => !c.classList.contains('revelee')).length).toBe(4)
+    expect(cartes.filter(c => c.classList.contains('revelee')).length).toBe(4)
+    expect(cartes.filter(c => !c.classList.contains('revelee')).length).toBe(3)
+    expect(texteDe(dom)).toContain("L'éthique")
     expect(texteDe(dom)).toContain("L'abnégation")
     expect(texteDe(dom)).toContain('à découvrir prochainement')
   })
 
-  it('should_present_categories_honestly_with_known_facts_and_a_completer_mentions', async () => {
-    const t = texteDe(await lire('dist/categories/index.html'))
-    expect(t).toContain('U6')
+  it('should_present_categories_with_formats_educateurs_and_a_completer_mentions', async () => {
+    const dom = await lire('dist/categories/index.html')
+    const t = texteDe(dom)
+    expect(t).toContain('Baby foot')
     expect(t).toContain('U17')
+    expect(t).toContain('Senior')
     expect(t).toContain('2022 et 2023')
     expect(t).toContain('à compléter par le club')
+    const u8 = [...dom.window.document.querySelectorAll('.categorie')].find(c => c.textContent?.includes('U8'))
+    expect(u8?.textContent).toContain('Franck Moreau')
+    expect(t).not.toContain('06 71 58 95 18')
+  })
+
+  it('should_list_coordinateur_and_responsable_foot_reduit_on_equipe', async () => {
+    const t = texteDe(await lire('dist/equipe/index.html'))
+    expect(t).toContain('Franck Moreau')
+    expect(t).toContain('Coordinateur sportif')
+    expect(t).toContain('Benjamin Guibal')
   })
 
   it('should_list_financial_partners_and_a_devenir_partenaire_call_on_partenaires_page', async () => {
