@@ -23,13 +23,24 @@ function echapperXml(texte: string): string {
     .replace(/"/g, '&quot;')
 }
 
-/** Coupe le titre en lignes d'au plus ~24 caractères, sans couper les mots. */
-function decouperEnLignes(titre: string, maxParLigne = 24): string[] {
+/** Zone de texte utile : marge gauche 80 px, motif (cercle) réservé à droite. */
+const LARGEUR_TEXTE_MAX = 760
+const ESPACEMENT_LETTRES = 3
+const LIGNES_MAX = 4
+
+/** Largeur estimée d'une ligne pour une taille de police donnée (glyphe ≈ 0,62 em + espacement). */
+const largeurEstimee = (texte: string, taille: number): number => texte.length * (taille * 0.62 + ESPACEMENT_LETTRES)
+
+/** Typographie française : la ponctuation haute reste attachée au mot qui la précède (espace insécable). */
+const attacherPonctuation = (titre: string): string => titre.replace(/\s+([:;!?»])/g, '\u00a0$1').replace(/(«)\s+/g, '$1\u00a0')
+
+/** Coupe le titre en lignes qui tiennent dans la zone de texte pour une taille donnée, sans couper les mots. */
+function decouperEnLignes(titre: string, taille: number): string[] {
   const lignes: string[] = []
   let courante = ''
-  for (const mot of titre.trim().split(/\s+/)) {
+  for (const mot of attacherPonctuation(titre.trim()).split(/ +/)) {
     const candidate = courante ? `${courante} ${mot}` : mot
-    if (candidate.length > maxParLigne && courante) {
+    if (largeurEstimee(candidate, taille) > LARGEUR_TEXTE_MAX && courante) {
       lignes.push(courante)
       courante = mot
     } else {
@@ -38,6 +49,16 @@ function decouperEnLignes(titre: string, maxParLigne = 24): string[] {
   }
   if (courante) lignes.push(courante)
   return lignes
+}
+
+/** Choisit la plus grande taille de police (84 → 44) qui tient en ≤ 4 lignes dans la zone de texte. */
+function composerTitre(titre: string): { lignes: string[]; taille: number } {
+  for (const taille of [84, 76, 68, 60, 54, 48, 44]) {
+    const lignes = decouperEnLignes(titre, taille)
+    const tientEnLargeur = lignes.every(l => largeurEstimee(l, taille) <= LARGEUR_TEXTE_MAX)
+    if (tientEnLargeur && lignes.length <= LIGNES_MAX) return { lignes, taille }
+  }
+  return { lignes: decouperEnLignes(titre, 44), taille: 44 }
 }
 
 function slugifier(titre: string): string {
@@ -53,13 +74,12 @@ export function genererVisuel(titre: string, alt: string = titre): string {
   const fond = TOKENS_CHARTE['noir-anthracite']
   const accent = TOKENS_CHARTE.rose
   const texte = TOKENS_CHARTE.blanc
-  const lignes = decouperEnLignes(titre)
-  const tailleTitre = lignes.length > 2 ? 64 : 84
+  const { lignes, taille: tailleTitre } = composerTitre(titre)
   const interligne = tailleTitre * 1.15
   const yDepart = HAUTEUR / 2 - ((lignes.length - 1) * interligne) / 2 + tailleTitre / 3
 
   const lignesSvg = lignes
-    .map((ligne, i) => `    <text x="80" y="${(yDepart + i * interligne).toFixed(0)}" fill="${texte}" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="${tailleTitre}" letter-spacing="3" style="text-transform:uppercase">${echapperXml(ligne.toUpperCase())}</text>`)
+    .map((ligne, i) => `    <text x="80" y="${(yDepart + i * interligne).toFixed(0)}" fill="${texte}" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="${tailleTitre}" letter-spacing="${ESPACEMENT_LETTRES}" style="text-transform:uppercase">${echapperXml(ligne.toUpperCase())}</text>`)
     .join('\n')
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${LARGEUR}" height="${HAUTEUR}" viewBox="0 0 ${LARGEUR} ${HAUTEUR}" role="img" aria-label="${echapperXml(alt)}">

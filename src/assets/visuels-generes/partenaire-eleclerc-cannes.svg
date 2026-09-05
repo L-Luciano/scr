@@ -11,8 +11,10 @@
   <circle cx="1050" cy="315" r="120" fill="none" stroke="#EC98C9" stroke-width="14" />
   <circle cx="1050" cy="315" r="44" fill="#EC98C9" />
   <g>
-    <text x="80" y="295" fill="#FFFFFF" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="84" letter-spacing="3" style="text-transform:uppercase">E.LECLERC CANNES,</text>
-    <text x="80" y="391" fill="#FFFFFF" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="84" letter-spacing="3" style="text-transform:uppercase">PARTENAIRE OFFICIEL</text>
+    <text x="80" y="220" fill="#FFFFFF" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="68" letter-spacing="3" style="text-transform:uppercase">E.LECLERC CANNES</text>
+    <text x="80" y="299" fill="#FFFFFF" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="68" letter-spacing="3" style="text-transform:uppercase">REJOINT LES</text>
+    <text x="80" y="377" fill="#FFFFFF" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="68" letter-spacing="3" style="text-transform:uppercase">PARTENAIRES</text>
+    <text x="80" y="455" fill="#FFFFFF" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="68" letter-spacing="3" style="text-transform:uppercase">OFFICIELS DU SCR</text>
   </g>
   <text x="80" y="586" fill="#EC98C9" font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-weight="700" font-size="26" letter-spacing="6">SPORTING CLUB ROQUETTAN</text>
 </svg>
