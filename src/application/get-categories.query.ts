@@ -12,7 +12,7 @@ export function getCategories(categories: Categories): GetCategoriesResult {
     ...categories,
     meta: MetaPageSchema.parse({
       titre: `Catégories — ${NOM_CLUB}, ${COMMUNE}`,
-      description: `Les catégories du ${NOM_CLUB} à ${COMMUNE}, de U6 à U17 et baby-foot : qui peut jouer, quand, et comment s'inscrire au Stade Joseph Ferrero.`,
+      description: `Les catégories du ${NOM_CLUB} à ${COMMUNE}, du baby-foot aux seniors, avec leurs éducateurs : qui peut jouer et comment s'inscrire au Stade Joseph Ferrero.`,
     }),
   }
 }

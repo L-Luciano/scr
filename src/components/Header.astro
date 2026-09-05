@@ -109,6 +109,12 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   .valeur h2::before { display: none; }
   .valeur blockquote { margin: 0; padding-left: 0.9rem; border-left: 3px solid var(--accent); font-style: italic; }
   .valeur blockquote p { margin: 0; }
+  .format { margin-top: 1.5rem; }
+  .categories { display: grid; gap: 0.75rem; padding: 0; margin: 0.75rem 0 0; list-style: none; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+  .categorie { border: 1px solid var(--accent); border-radius: 0.5rem; padding: 0.9rem 1rem; display: grid; gap: 0.2rem; }
+  .categorie .nom { color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+  .categorie .precision { font-size: 0.85rem; opacity: 0.85; }
+  .categorie .educateurs { font-size: 0.95rem; }
   .piliers-detail li { text-transform: none; letter-spacing: 0; }
   .piliers-detail li::first-line { text-transform: uppercase; letter-spacing: 0.06em; }
   @media (min-width: 1024px) {

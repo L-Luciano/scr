@@ -18,8 +18,22 @@ const { Content } = await render(entree)
       <h1>Caté<em>gories</em></h1>
       <div class="liseret"></div>
       <p class="accroche">{categories.introduction}</p>
+      {categories.groupes.map(groupe => (
+        <section class="format">
+          <h2>{groupe.format}</h2>
+          <ul class="categories">
+            {groupe.categories.map(categorie => (
+              <li class="categorie">
+                <span class="nom">{categorie.nom}</span>
+                {categorie.precision && <span class="precision">{categorie.precision}</span>}
+                <span class="educateurs">{categorie.educateurs.join(' · ')}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
       <Content />
-      <p class="actions"><a class="bouton" href="/rejoindre">Nous contacter</a></p>
+      <p class="actions"><a class="bouton" href="/rejoindre">Nous contacter</a> <a class="lien-secondaire" href="/equipe">Découvrir l'équipe</a></p>
     </main>
     <Footer />
   </body>
