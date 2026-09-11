@@ -22,14 +22,15 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(dom.window.document.querySelector('.programme-sportif')?.textContent).toContain('Programme Ünseme')
   })
 
-  it('should_present_seven_value_cards_four_revealed_and_three_a_venir', async () => {
+  it('should_present_seven_value_cards_five_revealed_and_two_a_venir', async () => {
     const dom = await lire('dist/le-club/valeurs/index.html')
     const cartes = [...dom.window.document.querySelectorAll('.valeur')]
     expect(cartes.length).toBe(7)
-    expect(cartes.filter(c => c.classList.contains('revelee')).length).toBe(4)
-    expect(cartes.filter(c => !c.classList.contains('revelee')).length).toBe(3)
+    expect(cartes.filter(c => c.classList.contains('revelee')).length).toBe(5)
+    expect(cartes.filter(c => !c.classList.contains('revelee')).length).toBe(2)
     expect(texteDe(dom)).toContain("L'éthique")
     expect(texteDe(dom)).toContain("L'abnégation")
+    expect(texteDe(dom)).toContain('Le respect')
     expect(texteDe(dom)).toContain('à découvrir prochainement')
   })
 

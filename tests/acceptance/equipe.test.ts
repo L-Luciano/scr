@@ -9,14 +9,16 @@ describe("Page L'équipe (dist/le-club/bureau/index.html)", () => {
     dom = new JSDOM(await readFile('dist/le-club/bureau/index.html', 'utf-8'))
   })
 
-  it('should_present_president_and_vice_president_with_their_role_and_message', () => {
+  it('should_present_president_and_both_vice_presidents_with_their_role_and_message', () => {
     const texte = dom.window.document.body.textContent ?? ''
     expect(texte).toContain('Nicolas Votano')
     expect(texte).toContain('Président')
     expect(texte).toContain('Yann Le Caharec')
     expect(texte).toContain('Vice-président')
+    expect(texte).toContain('Mickael Moreno')
+    expect(texte).toContain('rendre au football ce qu')
     expect(texte).toContain('la mentalité et les valeurs du rugby')
-    expect(dom.window.document.querySelectorAll('blockquote').length).toBeGreaterThanOrEqual(2)
+    expect(dom.window.document.querySelectorAll('blockquote').length).toBeGreaterThanOrEqual(3)
   })
 
   it('should_not_display_any_photo_of_a_real_person', () => {
@@ -29,6 +31,7 @@ describe("Page L'équipe (dist/le-club/bureau/index.html)", () => {
     const staff = dom.window.document.querySelector('.membres.staff')?.textContent ?? ''
     expect(bureau).toContain('Nicolas Votano')
     expect(bureau).toContain('Yann Le Caharec')
+    expect(bureau).toContain('Mickael Moreno')
     expect(bureau).not.toContain('Nicolas Longo')
     expect(staff).toContain('Nicolas Longo')
     expect(staff).toContain('Franck Moreau')

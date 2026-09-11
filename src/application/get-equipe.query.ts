@@ -13,7 +13,7 @@ export function getEquipe(membres: Membre[]): GetEquipeResult {
     membres: [...membres].sort((a, b) => a.ordre - b.ordre),
     meta: MetaPageSchema.parse({
       titre: `Le bureau — ${NOM_CLUB}, ${COMMUNE}`,
-      description: `Le bureau et le staff technique du ${NOM_CLUB}, club de football de ${COMMUNE} : président, vice-président, directeur sportif et éducateurs.`,
+      description: `Le bureau et le staff technique du ${NOM_CLUB}, club de football de ${COMMUNE} : président, vice-présidents, directeur sportif et éducateurs.`,
     }),
   }
 }
