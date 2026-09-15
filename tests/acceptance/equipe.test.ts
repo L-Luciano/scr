@@ -16,9 +16,11 @@ describe("Page L'équipe (dist/le-club/bureau/index.html)", () => {
     expect(texte).toContain('Yann Le Caharec')
     expect(texte).toContain('Vice-président')
     expect(texte).toContain('Mickael Moreno')
+    expect(texte).toContain('Anne Vieilledent')
+    expect(texte).toContain('Secrétaire')
     expect(texte).toContain('rendre au football ce qu')
     expect(texte).toContain('la mentalité et les valeurs du rugby')
-    expect(dom.window.document.querySelectorAll('blockquote').length).toBeGreaterThanOrEqual(3)
+    expect(dom.window.document.querySelectorAll('blockquote').length).toBeGreaterThanOrEqual(4)
   })
 
   it('should_not_display_any_photo_of_a_real_person', () => {
@@ -32,6 +34,7 @@ describe("Page L'équipe (dist/le-club/bureau/index.html)", () => {
     expect(bureau).toContain('Nicolas Votano')
     expect(bureau).toContain('Yann Le Caharec')
     expect(bureau).toContain('Mickael Moreno')
+    expect(bureau).toContain('Anne Vieilledent')
     expect(bureau).not.toContain('Nicolas Longo')
     expect(staff).toContain('Nicolas Longo')
     expect(staff).toContain('Franck Moreau')

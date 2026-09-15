@@ -116,7 +116,9 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   .categorie { border: 1px solid var(--accent); border-radius: 0.5rem; padding: 0.9rem 1rem; display: grid; gap: 0.2rem; }
   .categorie .nom { color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
   .categorie .precision { font-size: 0.85rem; opacity: 0.85; }
-  .categorie .educateurs { font-size: 0.95rem; }
+  .categorie .seances { list-style: none; margin: 0.35rem 0 0.2rem; padding: 0; display: grid; gap: 0.15rem; font-size: 0.95rem; font-weight: 600; }
+  .categorie .seances li::before { content: '\\2022  '; color: var(--accent); }
+  .categorie .educateurs { font-size: 0.9rem; opacity: 0.9; }
   .piliers-detail li { text-transform: none; letter-spacing: 0; }
   .piliers-detail li::first-line { text-transform: uppercase; letter-spacing: 0.06em; }
   @media (min-width: 1024px) {

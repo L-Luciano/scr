@@ -42,8 +42,15 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(t).toContain('Senior')
     expect(t).toContain('2022 et 2023')
     expect(t).toContain('à compléter par le club')
-    const u8 = [...dom.window.document.querySelectorAll('.categorie')].find(c => c.textContent?.includes('U8'))
+    const cartes = [...dom.window.document.querySelectorAll('.categorie')]
+    const u8 = cartes.find(c => c.textContent?.includes('U8'))
     expect(u8?.textContent).toContain('Franck Moreau')
+    expect(u8?.textContent).toContain('Mercredi 14h00-15h30')
+    expect(u8?.textContent).toContain('Mardi 17h45-19h00')
+    const veterans = cartes.find(c => c.textContent?.includes('Vétérans'))
+    expect(veterans?.textContent).toContain('Vendredi 20h00-21h30')
+    expect(veterans?.textContent).toContain('à compléter par le club')
+    expect(cartes.length).toBe(13)
     expect(t).not.toContain('06 71 58 95 18')
   })
 
