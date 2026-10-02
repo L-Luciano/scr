@@ -135,7 +135,9 @@ const styleGlobal = `:root { --fond: ${fond}; --accent: ${accent}; --texte: ${te
   dl.fiche dt { color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; }
   dl.fiche dd { margin: 0 0 0.75rem; overflow-wrap: anywhere; }
   @media (min-width: 768px) { dl.fiche { grid-template-columns: max-content 1fr; gap: 0.5rem 1.5rem; } dl.fiche dd { margin: 0; } }
-  .partenaires { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0; list-style: none; }
+  .niveau-partenariat h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 1.25rem 0 0.5rem; }
+  .niveau-partenariat[data-niveau="Platine"] .partenaires li, .niveau-partenariat[data-niveau="Or"] .partenaires li { background: var(--accent); color: var(--fond); font-weight: 700; }
+  .partenaires { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0; margin: 0; list-style: none; }
   .partenaires li { border: 1px solid var(--accent); border-radius: 999px; padding: 0.4rem 1rem; }
   .accroche { font-size: 1.35rem; font-weight: 700; line-height: 1.3; }
   .pilier-accroche { display: block; margin-top: 0.6rem; font-weight: 400; text-transform: none; letter-spacing: 0; opacity: 0.9; }

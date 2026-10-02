@@ -20,9 +20,14 @@ programmeSportif:
   statut: "Club satellite"
 partenaires:
   - nom: "Super U Pégomas"
+    niveau: "Platine"
+  - nom: "BG Environnement"
+    niveau: "Or"
   - nom: "E.Leclerc Cannes"
   - nom: "Construction Giagnoni"
   - nom: "SODDY"
+  - nom: "Century 21 Immobilier Conseil"
+  - nom: "Big Alu"
 ---
 ## Un club né en 2026
 

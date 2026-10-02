@@ -18,7 +18,7 @@ for (const entree of entrees) rendus.set(entree.data.numero, (await render(entre
       <p class="accent">Le club · Les valeurs</p>
       <h1>Le Carnet des <em>Valeurs</em></h1>
       <div class="liseret"></div>
-      <p>Au SCR, les valeurs ne restent pas des mots. Un Carnet des Valeurs est remis aux membres du club, et chacun, joueur, éducateur, dirigeant ou parent, s'engage en le signant à respecter les sept principes qui font l'identité du club. Le club les dévoile une à une au fil de la saison.</p>
+      <p>Au SCR, les valeurs ne restent pas des mots. Un Carnet des Valeurs est remis aux membres du club, et chacun, joueur, éducateur, dirigeant ou parent, s'engage en le signant à respecter les sept principes qui font l'identité du club. Le club les a dévoilées une à une à la rentrée 2026 ; les voici au complet.</p>
       <ol class="valeurs">
         {valeurs.cartes.map(carte => {
           const Contenu = carte.revelee ? rendus.get(carte.numero) : undefined

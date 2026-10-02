@@ -22,17 +22,18 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(dom.window.document.querySelector('.programme-sportif')?.textContent).toContain('Programme Ünseme')
   })
 
-  it('should_present_seven_value_cards_six_revealed_and_one_a_venir', async () => {
+  it('should_present_seven_value_cards_all_revealed', async () => {
     const dom = await lire('dist/le-club/valeurs/index.html')
     const cartes = [...dom.window.document.querySelectorAll('.valeur')]
     expect(cartes.length).toBe(7)
-    expect(cartes.filter(c => c.classList.contains('revelee')).length).toBe(6)
-    expect(cartes.filter(c => !c.classList.contains('revelee')).length).toBe(1)
+    expect(cartes.filter(c => c.classList.contains('revelee')).length).toBe(7)
+    expect(cartes.filter(c => !c.classList.contains('revelee')).length).toBe(0)
     expect(texteDe(dom)).toContain("L'éthique")
     expect(texteDe(dom)).toContain("L'abnégation")
     expect(texteDe(dom)).toContain('Le respect')
     expect(texteDe(dom)).toContain('La solidarité')
-    expect(texteDe(dom)).toContain('à découvrir prochainement')
+    expect(texteDe(dom)).toContain('La passion')
+    expect(texteDe(dom)).not.toContain('à découvrir prochainement')
   })
 
   it('should_present_categories_with_formats_educateurs_and_a_completer_mentions', async () => {
@@ -65,8 +66,10 @@ describe('Architecture du site — pages issues de la restructuration', () => {
   it('should_list_financial_partners_and_a_devenir_partenaire_call_on_partenaires_page', async () => {
     const dom = await lire('dist/partenaires/index.html')
     const noms = [...dom.window.document.querySelectorAll('ul.partenaires li')].map(li => li.textContent?.trim())
-    expect(noms).toEqual(expect.arrayContaining(['Super U Pégomas', 'E.Leclerc Cannes', 'Construction Giagnoni', 'SODDY']))
+    expect(noms).toEqual(expect.arrayContaining(['Super U Pégomas', 'E.Leclerc Cannes', 'Construction Giagnoni', 'SODDY', 'Century 21 Immobilier Conseil', 'BG Environnement', 'Big Alu']))
     expect(noms).not.toContain('AS Monaco')
+    const niveaux = [...dom.window.document.querySelectorAll('.niveau-partenariat')].map(s => [s.getAttribute('data-niveau'), s.querySelector('h3')?.textContent, s.querySelectorAll('li').length])
+    expect(niveaux).toEqual([['Platine', 'Partenaire Platine', 1], ['Or', 'Partenaire Or', 1], ['Officiel', 'Partenaires officiels', 5]])
     const liensMail = dom.window.document.querySelectorAll('a[href^="mailto:sporting.club.roquettan@gmail.com"]')
     expect(liensMail.length).toBe(1)
     expect(liensMail[0].textContent).toContain('Nous écrire')

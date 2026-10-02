@@ -22,10 +22,15 @@ const coordonnees = getCoordonnees(coordonneesEntree.data)
       <div class="liseret"></div>
       <p>Des entreprises du territoire ont choisi de soutenir le projet dès sa première saison. Leur confiance représente énormément pour un club qui écrit les premières pages de son histoire.</p>
       <h2>Ils nous accompagnent en 2026-2027</h2>
-      <ul class="partenaires">
-        {partenaires.partenaires.map(partenaire => <PartenaireBadge partenaire={partenaire} />)}
-      </ul>
-      <p>Super U Pégomas est partenaire Platine ; E.Leclerc Cannes, Construction Giagnoni et SODDY sont partenaires officiels. Le partenariat sportif avec l'AS Monaco relève du <a href="/le-club/projet/">programme Ünseme</a>, présenté dans le projet du club.</p>
+      {partenaires.groupes.map(groupe => (
+        <section class="niveau-partenariat" data-niveau={groupe.niveau}>
+          <h3>{groupe.libelle}</h3>
+          <ul class="partenaires">
+            {groupe.partenaires.map(partenaire => <PartenaireBadge partenaire={partenaire} />)}
+          </ul>
+        </section>
+      ))}
+      <p>Le partenariat sportif avec l'AS Monaco relève du <a href="/le-club/projet/">programme Ünseme</a>, présenté dans le projet du club.</p>
       <h2>Devenir partenaire</h2>
       <p>Le Sporting Club Roquettan grandit et veut construire cette aventure avec les acteurs de son territoire. Soutenir le SCR, c'est accompagner un projet tourné vers la jeunesse, les valeurs, le sport et la vie locale, et associer votre entreprise à une aventure qui commence. Entreprises, commerçants, artisans : plusieurs formules existent pour accompagner le club à votre niveau.</p>
       <p>Le détail des formules (visibilité, contreparties, montants) : à compléter par le club. En attendant, un simple message{coordonnees.email && <> à <span class="email">{coordonnees.email}</span></>} suffit pour en discuter.</p>

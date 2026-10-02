@@ -1,6 +1,6 @@
 ---
 titre: "Seniors : une première victoire en championnat, sans toucher le ballon"
-datePublication: "2026-09-22"
+datePublication: "2026-09-21"
 extrait: "Premier match de Départemental 5 pour les seniors du SCR : 3-0 face au FC Cimiez, qui ne s'est pas présenté."
 visuel:
   asset: "../../assets/visuels-generes/seniors-premiere-victoire-en-championnat.svg"
