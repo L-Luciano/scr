@@ -1,15 +1,57 @@
 ---
+/**
+ * En-tête SEO de toutes les pages : titre, description, canonical, Open Graph / Twitter,
+ * données structurées (organisation sur chaque page, article sur les actualités) et mesure Vercel.
+ */
+import { getEntry } from 'astro:content'
 import type { MetaPage } from '../domain/club-presentation/meta-page.schema'
+import { CHEMIN_LOGO } from '../domain/brand-system/charte-graphique'
+import { organisationJsonLd } from '../domain/club-presentation/donnees-structurees'
 import Analytics from '@vercel/analytics/astro'
 import SpeedInsights from '@vercel/speed-insights/astro'
-interface Props { meta: MetaPage }
-const { meta } = Astro.props
+
+interface Props {
+  meta: MetaPage
+  /** 'article' pour une actualité (Open Graph), 'website' sinon. */
+  type?: 'website' | 'article'
+  /** Données structurées supplémentaires (ex. NewsArticle), ajoutées à celles de l'organisation. */
+  jsonLd?: Record<string, unknown>[]
+  datePublication?: string
+}
+const { meta, type = 'website', jsonLd = [], datePublication } = Astro.props
+
+if (!Astro.site) throw new Error('`site` doit être défini dans astro.config.mjs (canonical, sitemap, Open Graph).')
+const siteUrl = Astro.site.origin
+const cheminCanonique = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`
+const canonical = `${siteUrl}${cheminCanonique}`
+const logoUrl = `${siteUrl}${CHEMIN_LOGO}`
+
+const identite = await getEntry('identiteClub', 'identite-club')
+const coordonnees = await getEntry('coordonnees', 'coordonnees')
+if (!identite || !coordonnees) throw new Error('Contenu identite-club.md ou coordonnees.md introuvable (SEO).')
+const organisation = organisationJsonLd({ lieu: identite.data.lieuClub, email: coordonnees.data.email, instagram: coordonnees.data.instagram, siteUrl, logoUrl })
+const donneesStructurees = [organisation, ...jsonLd]
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{meta.titre}</title>
 <meta name="description" content={meta.description} />
-<link rel="icon" href="/assets/logo-scr-720.jpg" />
+<link rel="canonical" href={canonical} />
+<link rel="icon" href={CHEMIN_LOGO} />
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content="Sporting Club Roquettan" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:title" content={meta.titre} />
+<meta property="og:description" content={meta.description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={logoUrl} />
+<meta property="og:image:alt" content="Logo du Sporting Club Roquettan" />
+{datePublication && <meta property="article:published_time" content={datePublication} />}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={meta.titre} />
+<meta name="twitter:description" content={meta.description} />
+<meta name="twitter:image" content={logoUrl} />
+{donneesStructurees.map(donnees => <script type="application/ld+json" set:html={JSON.stringify(donnees)} />)}
 <!-- Mesure d'audience Vercel Web Analytics : sans cookie ni identifiant persistant (décision utilisateur 2026-09-05). -->
 <Analytics />
 <!-- Mesure des performances (Web Vitals) Vercel Speed Insights, anonyme (décision utilisateur 2026-09-05). -->

@@ -12,7 +12,7 @@ export function getCategories(categories: Categories): GetCategoriesResult {
     ...categories,
     meta: MetaPageSchema.parse({
       titre: `Catégories — ${NOM_CLUB}, ${COMMUNE}`,
-      description: `Les catégories du ${NOM_CLUB} à ${COMMUNE}, du baby-foot aux vétérans : années de naissance, horaires d'entraînement 2026-2027 et éducateurs au Stade Joseph Ferrero.`,
+      description: `Inscription foot enfant et adulte à ${COMMUNE} : les catégories du ${NOM_CLUB}, du baby-foot aux vétérans, avec années de naissance, horaires d'entraînement 2026-2027 et éducateurs.`,
     }),
   }
 }

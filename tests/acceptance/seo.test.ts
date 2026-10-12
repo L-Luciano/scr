@@ -52,3 +52,72 @@ describe('Découvrabilité web — scan de dist/', () => {
     expect(new Set(titres).size).toBe(titres.length)
   })
 })
+
+const SITE = 'https://sporting-club-roquettan.vercel.app'
+const cheminVersUrl = (chemin: string) => `${SITE}/${path.relative('dist', path.dirname(chemin)).split(path.sep).filter(Boolean).join('/')}`.replace(/\/?$/, '/')
+
+describe('Référencement — canonical, Open Graph, données structurées, sitemap et robots', () => {
+  let pages: { chemin: string; dom: JSDOM }[]
+
+  beforeAll(() => {
+    pages = trouverTousLesIndexHtml('dist').map(chemin => ({ chemin, dom: new JSDOM(readFileSync(chemin, 'utf-8')) }))
+  })
+
+  it('should_declare_a_canonical_url_with_trailing_slash_matching_the_page_path_on_every_page', () => {
+    pages.forEach(({ chemin, dom }) => {
+      expect(dom.window.document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(cheminVersUrl(chemin))
+    })
+  })
+
+  it('should_provide_open_graph_title_description_url_and_an_absolute_image_on_every_page', () => {
+    pages.forEach(({ chemin, dom }) => {
+      const og = (p: string) => dom.window.document.querySelector(`meta[property="og:${p}"]`)?.getAttribute('content')
+      expect(og('title')).toBe(dom.window.document.querySelector('title')?.textContent)
+      expect(og('description')).toBe(dom.window.document.querySelector('meta[name="description"]')?.getAttribute('content'))
+      expect(og('url')).toBe(cheminVersUrl(chemin))
+      expect(og('image')).toBe(`${SITE}/assets/logo-scr-720.jpg`)
+      expect(og('type')).toBe(chemin.includes('/actualites/2026-') ? 'article' : 'website')
+    })
+  })
+
+  it('should_embed_the_club_as_a_sports_organisation_located_in_the_commune_on_every_page', () => {
+    pages.forEach(({ dom }) => {
+      const blocs = [...dom.window.document.querySelectorAll('script[type="application/ld+json"]')].map(s => JSON.parse(s.textContent ?? '{}'))
+      const organisation = blocs.find(b => b['@type'] === 'SportsOrganization')
+      expect(organisation?.name).toBe('Sporting Club Roquettan')
+      expect(organisation?.address?.addressLocality).toBe('La Roquette-sur-Siagne')
+      expect(organisation?.address?.postalCode).toBe('06550')
+      expect(organisation?.sameAs).toContain('https://www.instagram.com/sporting.club.roquettan/')
+    })
+  })
+
+  it('should_embed_a_dated_news_article_on_each_actualite_detail_page_only', () => {
+    pages.forEach(({ chemin, dom }) => {
+      const blocs = [...dom.window.document.querySelectorAll('script[type="application/ld+json"]')].map(s => JSON.parse(s.textContent ?? '{}'))
+      const article = blocs.find(b => b['@type'] === 'NewsArticle')
+      if (chemin.includes('/actualites/2026-')) {
+        expect(article?.datePublished).toMatch(/^2026-\d{2}-\d{2}$/)
+        expect(article?.mainEntityOfPage).toBe(cheminVersUrl(chemin))
+        expect(dom.window.document.querySelector('meta[property="article:published_time"]')?.getAttribute('content')).toBe(article?.datePublished)
+      } else {
+        expect(article).toBeUndefined()
+      }
+    })
+  })
+
+  it('should_list_every_served_page_and_no_redirect_in_the_sitemap', () => {
+    const index = readFileSync('dist/sitemap-index.xml', 'utf-8')
+    expect(index).toContain(`${SITE}/sitemap-0.xml`)
+    const sitemap = readFileSync('dist/sitemap-0.xml', 'utf-8')
+    const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1])
+    const attendues = pages.map(p => cheminVersUrl(p.chemin)).sort()
+    expect([...urls].sort()).toEqual(attendues)
+    expect(urls).not.toContain(`${SITE}/equipe/`)
+  })
+
+  it('should_serve_a_robots_txt_that_allows_crawling_and_points_to_the_sitemap', () => {
+    const robots = readFileSync('dist/robots.txt', 'utf-8')
+    expect(robots).toMatch(/User-agent: \*\s+Allow: \//)
+    expect(robots).toContain(`Sitemap: ${SITE}/sitemap-index.xml`)
+  })
+})

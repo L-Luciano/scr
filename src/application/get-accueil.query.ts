@@ -19,7 +19,7 @@ export function getAccueil(identiteClub: IdentiteClub): GetAccueilResult {
     lienRejoindre: '/rejoindre',
     meta: MetaPageSchema.parse({
       titre: `Accueil — ${NOM_CLUB}, ${COMMUNE}`,
-      description: `${NOM_CLUB}, club de football fondé en 2026 à ${COMMUNE} : former des joueurs, faire grandir des personnes, construire une famille.`,
+      description: `${NOM_CLUB} : club de football et école de foot à ${COMMUNE}, du baby-foot aux seniors, au Stade Joseph Ferrero. Former des joueurs, faire grandir des personnes, construire une famille.`,
     }),
   }
 }

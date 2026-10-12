@@ -4,6 +4,8 @@ import Seo from '../../components/Seo.astro'
 import Header from '../../components/Header.astro'
 import Footer from '../../components/Footer.astro'
 import { getActualites } from '../../application/get-actualites.query'
+import { articleJsonLd } from '../../domain/club-presentation/donnees-structurees'
+import { CHEMIN_LOGO } from '../../domain/brand-system/charte-graphique'
 
 export async function getStaticPaths() {
   const entrees = await getCollection('actualites')
@@ -14,9 +16,11 @@ const [actualite] = getActualites([entree.data])
 const { Content } = await render(entree)
 const visuels = import.meta.glob<string>('/src/assets/visuels-generes/*.svg', { eager: true, query: '?url', import: 'default' })
 const urlVisuel = visuels[`/src/assets/visuels-generes/${actualite.visuel.asset.split('/').pop()}`]
+const siteUrl = Astro.site?.origin ?? ''
+const jsonLd = [articleJsonLd({ titre: actualite.titre, extrait: actualite.extrait, datePublication: actualite.datePublication, url: `${siteUrl}/actualites/${entree.id}/`, imageUrl: `${siteUrl}${CHEMIN_LOGO}` }, { siteUrl })]
 ---
 <html lang="fr">
-  <head><Seo meta={actualite.meta} /></head>
+  <head><Seo meta={actualite.meta} type="article" jsonLd={jsonLd} datePublication={actualite.datePublication} /></head>
   <body>
     <Header />
     <main>
