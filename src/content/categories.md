@@ -1,12 +1,11 @@
 ---
-introduction: "Le club accueille les joueuses et les joueurs du baby-foot aux vétérans, encadrés par le staff technique de la saison 2026-2027. Les créneaux ci-dessous s'appliquent à partir du 16 septembre 2026, sur le terrain rénové du Stade Joseph Ferrero."
+introduction: "Le club accueille les joueuses et les joueurs du baby-foot aux vétérans, encadrés par le staff technique de la saison 2026-2027, organisé depuis octobre autour de quatre coordinateurs. Les créneaux ci-dessous s'appliquent à partir du 16 septembre 2026, sur le terrain rénové du Stade Joseph Ferrero."
 groupes:
   - format: "Foot à 4 / foot à 5"
     categories:
       - nom: "Baby foot"
         annees: "enfants nés en 2022 et 2023"
         seances: ["Samedi 11h00-12h00"]
-        educateurs: ["Nicolas Longo"]
       - nom: "U6"
         annees: "nés en 2021"
         seances: ["Mercredi 13h45-15h00"]
@@ -29,10 +28,9 @@ groupes:
         annees: "nés en 2017"
         seances: ["Mercredi 14h00-15h30", "Vendredi 17h45-19h00"]
         educateurs: ["Valentin Silvent"]
-      - nom: "U11 · équipe Nicolas"
+      - nom: "U11 · seconde équipe"
         annees: "nés en 2016"
         seances: ["Mercredi 16h00-17h30", "Vendredi 17h45-19h00"]
-        educateurs: ["Nicolas Longo"]
       - nom: "U11 · équipe Amine"
         annees: "nés en 2016"
         seances: ["Mercredi 16h00-17h30", "Mardi 17h45-19h00"]

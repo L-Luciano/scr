@@ -35,9 +35,10 @@ describe("Page L'équipe (dist/le-club/bureau/index.html)", () => {
     expect(bureau).toContain('Yann Le Caharec')
     expect(bureau).toContain('Mickael Moreno')
     expect(bureau).toContain('Anne Vieilledent')
-    expect(bureau).not.toContain('Nicolas Longo')
-    expect(staff).toContain('Nicolas Longo')
+    expect(bureau).not.toContain('Franck Moreau')
+    expect(staff).not.toContain('Nicolas Longo')
     expect(staff).toContain('Franck Moreau')
+    expect(staff).toContain('Ralid Mechitoua')
   })
 
   it('should_redirect_the_old_equipe_url_to_le_bureau', async () => {

@@ -8,6 +8,8 @@ visuel:
   personneReelle: false
   alt: "Illustration abstraite rose et anthracite annonçant le stage des vacances de la Toussaint 2026"
 ---
+**Mise à jour du 11 octobre 2026 :** la formule et les tarifs ont changé. Les informations à jour sont dans l'article [Stage de la Toussaint : nouvelle formule](/actualites/2026-10-11-stage-toussaint-nouvelle-formule/).
+
 Pendant les vacances de la Toussaint, le Sporting Club Roquettan organise deux semaines de stage au Stade Joseph Ferrero : jouer, apprendre, progresser et surtout prendre du plaisir avec les copains du SCR. Le stage est ouvert aux licenciés du club comme aux enfants qui ne le sont pas.
 
 ## Les dates
@@ -28,6 +30,6 @@ Le repas de midi est à apporter, les goûters sont offerts. Pour les familles q
 
 ## S'inscrire
 
-Les inscriptions sont prises par Nicolas Longo, directeur sportif du club. Écrivez-nous à l'adresse du club ou sur Instagram, ou venez nous voir au stade : nous vous mettrons en relation. Les places se réservent dans l'ordre d'arrivée des demandes.
+Écrivez-nous à l'adresse du club ou sur Instagram, ou venez nous voir au stade : nous vous mettrons en relation. Les places se réservent dans l'ordre d'arrivée des demandes.
 
 On se retrouve sur le terrain !

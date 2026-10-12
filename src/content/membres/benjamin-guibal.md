@@ -1,7 +1,7 @@
 ---
 nom: "Benjamin Guibal"
-role: "Responsable du foot réduit (U6 à U9)"
-ordre: 5
+role: "Coordinateur du foot d'animation (baby-foot à U9)"
+ordre: 11
 groupe: "staff"
 ---
-Benjamin Guibal est responsable du foot réduit, des U6 aux U9, et entraîne les U6 et U7. Le foot à 4 et à 5 est la première étape du parcours au SCR : on y apprend à jouer ensemble avant d'apprendre à gagner.
+Du baby-foot aux U9, Benjamin Guibal accompagne les éducateurs autour de la découverte du football, du plaisir de jouer et de l'acquisition des premières bases. Il entraîne lui-même les U6 et les U7 : le foot à 4 et à 5 est la première étape du parcours au SCR, où l'on apprend à jouer ensemble avant d'apprendre à gagner.

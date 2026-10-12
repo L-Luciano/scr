@@ -14,4 +14,4 @@ Ce qui t'attend : une équipe soudée, du plaisir et des progrès, un cadre bien
 
 Le club est satellite du programme Ünseme de l'AS Monaco, ce qui lui donne un cadre de formation structuré, y compris pour les gardiens.
 
-Pour venir essayer, un premier contact suffit : écrivez-nous à l'adresse du club ou sur Instagram, ou passez au stade un jour d'entraînement. Le directeur sportif, Nicolas Longo, vous accueillera.
+Pour venir essayer, un premier contact suffit : écrivez-nous à l'adresse du club ou sur Instagram, ou passez au stade un jour d'entraînement. Les éducateurs vous accueilleront.

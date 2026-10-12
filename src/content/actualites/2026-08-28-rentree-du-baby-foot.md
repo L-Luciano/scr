@@ -10,6 +10,6 @@ visuel:
 ---
 Les plus petits aussi ont droit à leur aventure. Le Sporting Club Roquettan ouvre le baby-foot aux enfants nés en 2022 et 2023, avec des séances pensées pour leur âge : éveil moteur, découverte du ballon, jeux adaptés et apprentissage du vivre ensemble, dans le plaisir avant tout.
 
-Rendez-vous tous les samedis de 11 h à 12 h au Stade Joseph Ferrero, à partir du samedi 12 septembre 2026. Le premier cours d'essai est gratuit. Les séances sont encadrées par Nicolas Longo, directeur sportif du club.
+Rendez-vous tous les samedis de 11 h à 12 h au Stade Joseph Ferrero, à partir du samedi 12 septembre 2026. Le premier cours d'essai est gratuit.
 
 Parce qu'au SCR, le football commence par le plaisir de jouer et de grandir ensemble. Pour toute question, écrivez-nous sur Instagram ou venez nous voir au stade.

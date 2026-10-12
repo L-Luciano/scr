@@ -56,11 +56,16 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(t).not.toContain('06 71 58 95 18')
   })
 
-  it('should_list_coordinateur_and_responsable_foot_reduit_on_equipe', async () => {
+  it('should_list_the_four_coordinateurs_of_the_organisation_sportive_on_le_bureau', async () => {
     const t = texteDe(await lire('dist/le-club/bureau/index.html'))
-    expect(t).toContain('Franck Moreau')
-    expect(t).toContain('Coordinateur sportif')
+    expect(t).toContain('Ahmed Benaied')
+    expect(t).toContain('Référent technique')
     expect(t).toContain('Benjamin Guibal')
+    expect(t).toContain("Coordinateur du foot d'animation")
+    expect(t).toContain('Franck Moreau')
+    expect(t).toContain('Coordinateur du foot réduit')
+    expect(t).toContain('Ralid Mechitoua')
+    expect(t).toContain('Coordinateur du football à 11')
   })
 
   it('should_list_financial_partners_and_a_devenir_partenaire_call_on_partenaires_page', async () => {
@@ -77,10 +82,15 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(texteDe(dom)).toContain('Devenir partenaire')
   })
 
-  it('should_merge_the_staff_into_le_bureau_page', async () => {
+  it('should_no_longer_mention_the_former_directeur_sportif_anywhere', async () => {
+    const { readdir } = await import('node:fs/promises')
     const t = texteDe(await lire('dist/le-club/bureau/index.html'))
-    expect(t).toContain('Nicolas Longo')
-    expect(t).toContain('Directeur sportif')
+    expect(t).not.toContain('Nicolas Longo')
+    expect(t).not.toContain('Directeur sportif')
+    const pages = ['dist/categories/index.html', 'dist/rejoindre/index.html', 'dist/index.html']
+    for (const page of pages) expect(texteDe(await lire(page))).not.toContain('Nicolas Longo')
+    const actualites = (await readdir('dist/actualites')).filter(d => d.startsWith('2026-10'))
+    expect(actualites.length).toBeGreaterThanOrEqual(4)
   })
 
   it('should_offer_a_two_level_navigation_with_le_club_group_and_six_top_entries', async () => {
