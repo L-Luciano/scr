@@ -71,10 +71,10 @@ describe('Architecture du site — pages issues de la restructuration', () => {
   it('should_list_financial_partners_and_a_devenir_partenaire_call_on_partenaires_page', async () => {
     const dom = await lire('dist/partenaires/index.html')
     const noms = [...dom.window.document.querySelectorAll('ul.partenaires li')].map(li => li.textContent?.trim())
-    expect(noms).toEqual(expect.arrayContaining(['Super U Pégomas', 'E.Leclerc Cannes', 'Construction Giagnoni', 'SODDY', 'Century 21 Immobilier Conseil', 'BG Environnement', 'Big Alu']))
+    expect(noms).toEqual(expect.arrayContaining(['Super U Pégomas', 'E.Leclerc Cannes', 'Construction Giagnoni', 'SODDY', 'Century 21 Immobilier Conseil', 'BG Environnement', 'Big Alu', 'Mc Travelers Brewery']))
     expect(noms).not.toContain('AS Monaco')
     const niveaux = [...dom.window.document.querySelectorAll('.niveau-partenariat')].map(s => [s.getAttribute('data-niveau'), s.querySelector('h3')?.textContent, s.querySelectorAll('li').length])
-    expect(niveaux).toEqual([['Platine', 'Partenaire Platine', 1], ['Or', 'Partenaire Or', 1], ['Officiel', 'Partenaires officiels', 5]])
+    expect(niveaux).toEqual([['Platine', 'Partenaire Platine', 1], ['Or', 'Partenaire Or', 1], ['Officiel', 'Partenaires officiels', 6]])
     const liensMail = dom.window.document.querySelectorAll('a[href^="mailto:sporting.club.roquettan@gmail.com"]')
     expect(liensMail.length).toBe(1)
     expect(liensMail[0].textContent).toContain('Nous écrire')

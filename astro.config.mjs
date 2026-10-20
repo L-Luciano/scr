@@ -9,7 +9,11 @@ export default defineConfig({
   site: SITE_URL,
   output: 'static',
   // Ancienne adresse de la page des dirigeants (renommée « Le bureau » le 2026-09-05).
-  redirects: { '/equipe': '/le-club/bureau' },
+  redirects: {
+    '/equipe': '/le-club/bureau',
+    // Article du stage redaté (publication Facebook du 10 oct., d'abord enregistrée au 11).
+    '/actualites/2026-10-11-stage-toussaint-nouvelle-formule': '/actualites/2026-10-10-stage-toussaint-nouvelle-formule',
+  },
   // Sitemap généré au build (sitemap-index.xml) ; la page de redirection /equipe n'y figure pas.
-  integrations: [sitemap({ filter: page => !page.endsWith('/equipe/') })],
+  integrations: [sitemap({ filter: page => !page.endsWith('/equipe/') && !page.includes('/2026-10-11-stage-toussaint') })],
 })

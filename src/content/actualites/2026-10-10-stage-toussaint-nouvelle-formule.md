@@ -1,6 +1,6 @@
 ---
 titre: "Stage de la Toussaint : nouvelle formule, tarif unique et accueil élargi"
-datePublication: "2026-10-11"
+datePublication: "2026-10-10"
 extrait: "110 € la semaine ou 25 € la journée pour tous, accueil de 8 h 30 à 17 h 30 inclus, et deux places pour Monaco-Lille par semaine complète."
 visuel:
   asset: "../../assets/visuels-generes/stage-de-la-toussaint-nouvelle-formule.svg"
