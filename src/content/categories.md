@@ -62,6 +62,10 @@ Les plus petits ont leur rendez-vous tous les samedis de 11 h à 12 h au Stade J
 
 Toutes les séances ont lieu au Stade Joseph Ferrero, dont la pelouse vient d'être entièrement refaite par la Mairie de La Roquette-sur-Siagne. Les U9 s'entraînent le vendredi sur le terrain synthétique. Le planning ci-dessus vaut pour toute la saison 2026-2027 ; en cas de changement ponctuel, le club prévient les familles directement.
 
+## Les gardiens de but
+
+Les gardiens de toutes les catégories bénéficient d'entraînements spécifiques avec l'académie privée de Pierre Rolly, en complément des séances de leur équipe : réflexes, placement, prises de balle, sorties et jeu au pied.
+
 ## Tarifs et inscription
 
 Le montant de la licence et les documents à fournir : à compléter par le club. Pour toute question, écrivez-nous sur Instagram ou par e-mail, ou venez nous rencontrer au stade : nous vous indiquons la marche à suivre dès votre premier message.

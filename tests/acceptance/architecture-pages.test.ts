@@ -53,6 +53,7 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(veterans?.textContent).toContain('Vendredi 20h00-21h30')
     expect(veterans?.textContent).toContain('à compléter par le club')
     expect(cartes.length).toBe(13)
+    expect(t).toContain('Pierre Rolly')
     expect(t).not.toContain('06 71 58 95 18')
   })
 
