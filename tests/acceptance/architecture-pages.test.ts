@@ -49,6 +49,8 @@ describe('Architecture du site — pages issues de la restructuration', () => {
     expect(u8?.textContent).toContain('Franck Moreau')
     expect(u8?.textContent).toContain('Mercredi 14h00-15h30')
     expect(u8?.textContent).toContain('Mardi 17h45-19h00')
+    const u11Premiere = cartes.find(c => c.textContent?.includes('U11 · équipe première'))
+    expect(u11Premiere?.textContent).toContain('Benjamin Guibal')
     const veterans = cartes.find(c => c.textContent?.includes('Vétérans'))
     expect(veterans?.textContent).toContain('Vendredi 20h00-21h30')
     expect(veterans?.textContent).toContain('à compléter par le club')

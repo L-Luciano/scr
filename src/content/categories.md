@@ -28,9 +28,10 @@ groupes:
         annees: "nés en 2017"
         seances: ["Mercredi 14h00-15h30", "Vendredi 17h45-19h00"]
         educateurs: ["Valentin Silvent"]
-      - nom: "U11 · seconde équipe"
+      - nom: "U11 · équipe première"
         annees: "nés en 2016"
         seances: ["Mercredi 16h00-17h30", "Vendredi 17h45-19h00"]
+        educateurs: ["Benjamin Guibal"]
       - nom: "U11 · équipe Amine"
         annees: "nés en 2016"
         seances: ["Mercredi 16h00-17h30", "Mardi 17h45-19h00"]
